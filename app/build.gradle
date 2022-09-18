@@ -55,7 +55,4 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
 
 
-    //google library for simplifying assertions
-    testImplementation 'com.google.truth:truth.1.1.2'
-    androidTestImplementation 'com.google.truth:truth.1.1.2'
 }

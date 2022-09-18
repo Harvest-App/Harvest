@@ -20,27 +20,11 @@ public class CreateAccountTest {
     }
 
     @Test
-    public void aValidPasswordFails() throws Exception{
-
-        CreateAccountValidation utils = new CreateAccountValidation();
-
-        assertTrue(!utils.isValidPassword("12356"));
-    }
-
-    @Test
     public void aValidFullNamePasses() throws Exception{
 
         CreateAccountValidation utils = new CreateAccountValidation();
 
         assertTrue(utils.isValidFullname("name"));
-    }
-
-    @Test
-    public void aValidFullNameFails() throws Exception{
-
-        CreateAccountValidation utils = new CreateAccountValidation();
-
-        assertTrue(!utils.isValidFullname(""));
     }
 
     @Test
@@ -52,26 +36,10 @@ public class CreateAccountTest {
     }
 
     @Test
-    public void aValidEmailFails() throws Exception{
-
-        CreateAccountValidation utils = new CreateAccountValidation();
-
-        assertTrue(!utils.isValidEmail(""));
-    }
-
-    @Test
     public void aValidUserNamePasses() throws Exception{
 
         CreateAccountValidation utils = new CreateAccountValidation();
 
         assertTrue(utils.isValidUsername("123123"));
-    }
-
-    @Test
-    public void aValidUserNameFails() throws Exception{
-
-        CreateAccountValidation utils = new CreateAccountValidation();
-
-        assertTrue(!utils.isValidUsername(""));
     }
 }
