@@ -8,5 +8,3 @@ Group members:
 * Atiyya Hoosain
 * Zagesh Parshotam
 
-
-![example workflow](https://github.com/Harvest-App/Harvest/blob/master/.github/workflows/android_build.yml/badge.svg)
