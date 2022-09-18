@@ -32,6 +32,3 @@ jobs:
         with:
           api-level: 24
           script: ./gradlew connectedCheck
-
-      - name: Upload coverage reports to Codecov with GitHub Action
-        uses: codecov/codecov-action@v3
