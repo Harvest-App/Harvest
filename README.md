@@ -7,3 +7,5 @@ Group members:
 * Rebekah van Wyk (scrum master)
 * Atiyya Hoosain
 * Zagesh Parshotam
+
+[![Android CI](https://github.com/Harvest-App/Harvest/actions/workflows/android_build.yml/badge.svg)](https://github.com/Harvest-App/Harvest/actions/workflows/android_build.yml)
