@@ -11,7 +11,7 @@
         android:id="@+id/createInstruction"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:text="Add new log entry"
         android:textAlignment="center"
@@ -24,31 +24,39 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Produce type"
         android:inputType="textEmailAddress"
         android:textSize="24sp"
         />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#FFEEDA"
+        android:padding="4dp"
+        android:scrollbars="vertical" />
     <EditText
         android:id="@+id/weightET"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
         android:ems="10"
-        android:hint="Weight (kg)"
+        android:hint="Weight (g)"
         android:inputType="number"
-        android:textSize="24sp"
-        />
+        android:textSize="24sp" />
+
 
     <Button
         android:id="@+id/addLogEntry"
         android:layout_width="380dp"
         android:layout_height="70dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="2dp"
         android:layout_marginRight="15dp"
         android:layout_weight="1"
         android:backgroundTint="#c36c04"
@@ -61,7 +69,7 @@
         android:layout_width="380dp"
         android:layout_height="70dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="2dp"
         android:layout_marginRight="15dp"
         android:layout_weight="1"
         android:backgroundTint="#daab65"
@@ -75,7 +83,8 @@
         android:layout_width="380dp"
         android:layout_height="70dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
         android:layout_marginRight="15dp"
         android:layout_weight="1"
         android:backgroundTint="#daab65"

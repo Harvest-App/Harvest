@@ -14,7 +14,7 @@ public class Log {
 
 
     public Log(){
-        //firestore always needs a public empty constructor
+        //Firestore requires an empty public constructor
     }
 
     public Log(String userID, String logName){

@@ -52,7 +52,7 @@ public class LogEntryHome extends AppCompatActivity {
         setContentView(R.layout.activity_log_entry_home);
 
         String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
-        returnHome = (Button) findViewById(R.id.returnHome);
+        returnHome = findViewById(R.id.returnHome);
 
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +61,7 @@ public class LogEntryHome extends AppCompatActivity {
             }
         });
 
-        addEntry = (Button) findViewById(R.id.addLogEntry);
+        addEntry =  findViewById(R.id.addLogEntry);
         addEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +69,7 @@ public class LogEntryHome extends AppCompatActivity {
             }
         });
 
-        logDisplayTextView = (TextView) findViewById(R.id.logDisplay); //textView to list logs
+        logDisplayTextView = findViewById(R.id.logDisplay); //textView to list logs
 
         loadLogEntries(logID);
     }
@@ -91,10 +91,10 @@ public class LogEntryHome extends AppCompatActivity {
 
                             //getting the ID of the actual document
                             String docID = log.getDocumentID();
-                            String produceType = log.getProduceType();
+                            String foodType = log.getProduceFood();
                             String weight = log.getWeight();
                             String timeCreated=log.getTimeCreated();
-                            entryInfo+="Produce Type: "+produceType+"\n"+"Weight: "+weight+"\n"+"Log created: "+timeCreated+"\n\n";
+                            entryInfo+="Produce Type: "+foodType+"\n"+"Weight: "+weight+"g\n"+"Log created: "+timeCreated+"\n\n";
 
                         }
                         logDisplayTextView.setText(entryInfo);

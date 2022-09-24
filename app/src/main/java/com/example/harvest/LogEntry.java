@@ -9,17 +9,27 @@ public class LogEntry {
     private String documentID;
     private String userID;
     private String timeCreated;
+    private String produceFood;
+    private String produceSubtype;
     private String produceType;
+    private String produceSupertype;
     private String weight;
 
     public LogEntry(){
         //firestore always needs a public empty constructor
     }
 
-    public LogEntry(String userID, String produceType, String weight, String timeCreated){
+    public LogEntry(String userID,
+                    //String produceType,
+                    String produceFood, String produceSubtype,String produceType, String produceSupertype, String weight, String timeCreated){
 
         this.userID = userID;
-        this.produceType = produceType;
+       // this.produceType = produceType;
+
+        this.produceFood=produceFood;
+        this.produceSubtype=produceSubtype;
+        this.produceType=produceType;
+        this.produceSupertype=produceSupertype;
         this.weight=weight;
         this.timeCreated = timeCreated;
     }
@@ -46,8 +56,44 @@ public class LogEntry {
         this.userID = userID;
     }
 
+    public String getProduceFood() {
+        return produceFood;
+    }
+
+    public void setTimeCreated(String timeCreated) {
+        this.timeCreated = timeCreated;
+    }
+
+    public void setProduceFood(String produceFood) {
+        this.produceFood = produceFood;
+    }
+
+    public String getProduceSubtype() {
+        return produceSubtype;
+    }
+
     public String getProduceType() {
         return produceType;
+    }
+
+    public String getProduceSupertype() {
+        return produceSupertype;
+    }
+
+    public void setProduceSupertype(String produceSupertype) {
+        this.produceSupertype = produceSupertype;
+    }
+
+    public void setProduceType(String produceType) {
+        this.produceType = produceType;
+    }
+
+    public void setProduceSubtype(String produceSubtype) {
+        this.produceSubtype = produceSubtype;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
     }
 
     public String getWeight() {
