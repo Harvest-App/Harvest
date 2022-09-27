@@ -17,25 +17,29 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotPassword extends AppCompatActivity {
 
-
+    //UI elements
     private EditText emailEditText;
     private Button resetPasswordButton;
     private Button returnHome;
+
+    //firebase
     FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
+        //initialise instance of firebase auth
+        auth = FirebaseAuth.getInstance();
+
+        //initialise UI elements and OnClickListeners
         emailEditText = (EditText) findViewById(R.id.email);
         resetPasswordButton = (Button)findViewById(R.id.resetPassword);
-
-        auth = FirebaseAuth.getInstance();
 
         resetPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 resetPassword();
             }
         });
@@ -47,6 +51,7 @@ public class ForgotPassword extends AppCompatActivity {
     }
 
     private void resetPassword() {
+
         String email = emailEditText.getText().toString().trim();
 
         //check that fields aren't empty

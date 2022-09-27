@@ -55,10 +55,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onStart() {//display user's home page instead of login page if user is logged in
         super.onStart();
+
         // Check if user is signed in (non-null) and update UI accordingly
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+
         }
     }
     @Override
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String email = editTextLoginEmail.getText().toString().trim();
         String password = editTextLoginPassword.getText().toString().trim();
 
-        //check that fields arent empty
+        //check that fields aren't empty
         if (email.isEmpty()){
             editTextLoginEmail.setError("Email is a required field");
             editTextLoginEmail.requestFocus();

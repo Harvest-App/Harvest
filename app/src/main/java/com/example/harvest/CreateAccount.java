@@ -7,25 +7,20 @@ import android.content.Intent;
 import android.util.Log;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class CreateAccount extends AppCompatActivity {
 
@@ -51,7 +46,6 @@ public class CreateAccount extends AppCompatActivity {
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
         //initialise UI elements
-
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextFullName= (EditText) findViewById(R.id.fullname);
         editTextPassword = (EditText) findViewById(R.id.password);
@@ -64,7 +58,7 @@ public class CreateAccount extends AppCompatActivity {
 
     }
 
-    private void registerUser() {
+    private void registerUser() {//registers a user using firebase auth
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String fullName = editTextFullName.getText().toString().trim();

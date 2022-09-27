@@ -38,6 +38,8 @@ public class LogEntryHome extends AppCompatActivity {
     private Button returnHome;
     private Button addEntry;
     private TextView logDisplayTextView;
+    private TextView heading;
+    private Button analytics;
 
     //firestore database, documents, and collections
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -52,6 +54,8 @@ public class LogEntryHome extends AppCompatActivity {
         setContentView(R.layout.activity_log_entry_home);
 
         String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
+
+        //initialise UI elements and OnClickListeners
         returnHome = findViewById(R.id.returnHome);
 
         returnHome.setOnClickListener(new View.OnClickListener() {
@@ -62,10 +66,20 @@ public class LogEntryHome extends AppCompatActivity {
         });
 
         addEntry =  findViewById(R.id.addLogEntry);
+        heading = findViewById(R.id.logHeading);
         addEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LogEntryHome.this, CreateLogEntry.class));
+            }
+        });
+
+        analytics = findViewById(R.id.logAnalytics);
+
+        analytics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LogEntryHome.this,LogAnalytics.class));
             }
         });
 
@@ -76,7 +90,7 @@ public class LogEntryHome extends AppCompatActivity {
 
     //fetch and display log entries, filter latest on top
 
-    public void loadLogEntries(String logID){
+    public void loadLogEntries(String logID){//fetches log entries from firestore
         allLogsRef.document(logID).collection("Log Entries").orderBy("timeCreated", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -89,8 +103,7 @@ public class LogEntryHome extends AppCompatActivity {
                             //each document snapshot represents a log entry
                             LogEntry log = documentSnapshot.toObject(LogEntry.class);
 
-                            //getting the ID of the actual document
-                            String docID = log.getDocumentID();
+                            //fetches entry info and add it to a string to add to the textview
                             String foodType = log.getProduceFood();
                             String weight = log.getWeight();
                             String timeCreated=log.getTimeCreated();
@@ -98,7 +111,6 @@ public class LogEntryHome extends AppCompatActivity {
 
                         }
                         logDisplayTextView.setText(entryInfo);
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

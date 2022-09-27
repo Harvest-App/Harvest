@@ -10,6 +10,8 @@ public class OurLog {
     private String userID;
     private String timeCreated;
     private String logName;
+    private String logID;
+
     public OurLog(){
         //firestore always needs a public empty constructor
     }
@@ -35,6 +37,14 @@ public class OurLog {
     }
     public String getTimeCreated(){
         return timeCreated;
+    }
+
+    public String getLogID() {
+        return logID;
+    }
+
+    public void setLogID(String logID) {
+        this.logID = logID;
     }
 }
 

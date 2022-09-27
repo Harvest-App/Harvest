@@ -2,9 +2,6 @@ package com.example.harvest;
 
 import com.google.firebase.firestore.Exclude;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class LogEntry {
     private String documentID;
     private String userID;
@@ -19,13 +16,9 @@ public class LogEntry {
         //firestore always needs a public empty constructor
     }
 
-    public LogEntry(String userID,
-                    //String produceType,
-                    String produceFood, String produceSubtype,String produceType, String produceSupertype, String weight, String timeCreated){
+    public LogEntry(String userID, String produceFood, String produceSubtype,String produceType, String produceSupertype, String weight, String timeCreated){
 
         this.userID = userID;
-       // this.produceType = produceType;
-
         this.produceFood=produceFood;
         this.produceSubtype=produceSubtype;
         this.produceType=produceType;

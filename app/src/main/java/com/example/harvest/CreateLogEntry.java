@@ -37,22 +37,24 @@ import android.widget.EditText;
 
 public class CreateLogEntry extends AppCompatActivity {
 
+    //UI elements
     private EditText produceET;
     private EditText weightET;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Button addLogEntry;
     private Button returnHome;
     private Button seeEntries;
     private ProduceItem produceItem;
+
+    //Firestore database and paths
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference usersRef = db.collection("users");
 
-    private ArrayList<ProduceItem> mProduceList;
-    private ArrayList<ProduceItem> posList;// to get accurate position
-
+    //recyclerview
     private RecyclerView mRecyclerView;
     private RecycleViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
+    private ArrayList<ProduceItem> mProduceList;
+    private ArrayList<ProduceItem> posList;// to get accurate position
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +64,7 @@ public class CreateLogEntry extends AppCompatActivity {
         createProduceList();
         buildRecyclerView();
 
-        Intent j = getIntent();
-        String logID = j.getStringExtra("logID");
-
-        //initialise UI elements and set their OnClicklisteners
+        //initialise UI elements
         produceET = findViewById(R.id.produceET);
         weightET = findViewById(R.id.weightET);
 
@@ -105,11 +104,11 @@ public class CreateLogEntry extends AppCompatActivity {
         //add log entry to Firestore
         addLogEntry = findViewById(R.id.addLogEntry);
         addLogEntry.setOnClickListener(view -> {
-            createLogEntry(logID);
+            createLogEntry();
         });
     }
 
-    void createLogEntry(String logID){
+    void createLogEntry(){
         String produce = produceET.getText().toString().trim();
         String weight = weightET.getText().toString().trim();
 
@@ -160,7 +159,7 @@ public class CreateLogEntry extends AppCompatActivity {
 
     }
 
-    private void filter(String text) {
+    private void filter(String text) {//changes recyclerview according to search bar
         ArrayList<ProduceItem> filteredList = new ArrayList<>();
 
         for (ProduceItem item : mProduceList) {
@@ -173,13 +172,6 @@ public class CreateLogEntry extends AppCompatActivity {
         posList=filteredList;
     }
 
-//    public void changeItem(int position){
-//
-//        produceET.setText(mProduceList.get(position).getFoodType());
-//      //  mProduceList.get(position).changeText();
-//        mAdapter.notifyItemChanged(position);
-//
-//    }
     private void createProduceList() {
         mProduceList = new ArrayList<>();
         mProduceList.add(new ProduceItem("Almond","Almond","Nut","Fruit"));
@@ -279,7 +271,7 @@ public class CreateLogEntry extends AppCompatActivity {
 
     }
 
-    private void buildRecyclerView() {
+    private void buildRecyclerView() {//builds the recyclerview
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -290,8 +282,11 @@ public class CreateLogEntry extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new RecycleViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+                //happens when a card in the recyclerview is clicked
+                if(posList==null){
+                    posList=mProduceList;
+                }
                 produceET.setText(posList.get(position).getFoodType());
-
             }
         });
     }

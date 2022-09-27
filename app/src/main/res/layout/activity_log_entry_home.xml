@@ -43,6 +43,19 @@
             android:layout_weight="1"
             />
         <Button
+            android:id="@+id/logAnalytics"
+            android:text="SEE LOG ANALYTICS"
+            android:backgroundTint="#d5a050"
+            android:layout_width="380dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            />
+        <Button
             android:id="@+id/returnHome"
             android:text="RETURN HOME"
             android:backgroundTint="#daab65"

@@ -2,45 +2,42 @@ package com.example.harvest;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.util.Log;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
+
 
 
 
 public class CreateLog extends AppCompatActivity {
 
+    //ui elements
     private EditText logName;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Button addLog;
     private Button returnHome;
 
+    //firebase information
     private CollectionReference usersRef = db.collection("users");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_log);
+
+        //initialise UI elements and relevant OnClickListeners
 
         logName = (EditText) findViewById(R.id.logName);
         returnHome = (Button)findViewById(R.id.returnHome);
@@ -55,17 +52,18 @@ public class CreateLog extends AppCompatActivity {
         });
     }
 
-    void createLog(){
+    void createLog(){//adds a log to Firestore with user inputted data
+
         String logNamed = logName.getText().toString().trim();
 
-        //field not empty check
+        //check log name isn't empty
         if (logNamed.isEmpty()){
-            logName.setError("Enter log name to proceed ");
+            logName.setError("Enter log name to proceed");
             logName.requestFocus();
             return;
         }
 
-        //fetching date to sort by time created later
+        //fetching date to add the time the log was created
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         String timeCreated = formatter.format(date);

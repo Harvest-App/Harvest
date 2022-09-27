@@ -5,19 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ProfileActivity"
-    android:orientation="vertical"
-    android:id="@+id/pageLayout"
-    >
-
-<!--    <TextView-->
-<!--        android:id="@+id/greeting"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="40dp"-->
-<!--        android:layout_marginBottom="24dp"-->
-<!--        android:layout_weight="1"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textSize="25sp"/>-->
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/logHeading"
@@ -25,26 +13,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="24dp"
-        android:layout_weight="1"
         android:textAlignment="center"
         android:text="YOUR LOGS"
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#434a53"
-/>
+        />
 
-<!--    <TextView-->
-<!--        android:id="@+id/logDisplay"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="40dp"-->
-<!--        android:layout_marginBottom="24dp"-->
-<!--        android:layout_weight="1"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textColor="#a29990"-->
-<!--        />-->
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#FFEEDA"
+        android:padding="4dp"
+        android:scrollbars="vertical" />
 
     <Button
         android:id="@+id/addLog"
@@ -57,7 +39,7 @@
         android:layout_marginRight="15dp"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:layout_weight="1"
+
         />
     <Button
         android:id="@+id/logOut"
@@ -70,6 +52,5 @@
         android:layout_marginRight="15dp"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:layout_weight="1"
         />
 </LinearLayout>
