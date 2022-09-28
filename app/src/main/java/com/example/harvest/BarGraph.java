@@ -71,7 +71,7 @@ public class BarGraph extends AppCompatActivity {
         barDataSet.setValueTextSize(16f);
 
         //small description
-        barChart.getDescription().setEnabled(true);
+        barChart.getDescription().setEnabled(false);
 
     }
 
