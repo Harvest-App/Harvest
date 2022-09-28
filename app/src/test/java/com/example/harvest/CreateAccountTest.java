@@ -74,4 +74,20 @@ public class CreateAccountTest {
 
         assertTrue(!utils.isValidUsername(""));
     }
+
+    @Test
+    public void aValidPasswordPasses2() throws Exception{
+
+        CreateAccountValidation utils = new CreateAccountValidation();
+
+        assertTrue(utils.isValidpassword("123456"));
+    }
+
+    @Test
+    public void aValidPasswordFails2() throws Exception{
+
+        CreateAccountValidation utils = new CreateAccountValidation();
+
+        assertTrue(!utils.isValidpassword(""));
+    }
 }

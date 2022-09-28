@@ -15,6 +15,18 @@ public class CreateAccountValidation {
     }
 
     /**
+     * Checks to see if password was filled
+     *
+     * @param password
+     * @return passwordFilled
+     */
+    public boolean isValidpassword(String password){
+        boolean passwordFilled = !password.isEmpty();
+
+        return passwordFilled;
+    }
+
+    /**
      * Checks to see if FullName was filled
      *
      * @param fullName
