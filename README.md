@@ -4,7 +4,7 @@ This repository will be tracking the creation of an app to to facilitate the pro
 
 Group members:
 
-* Rebekah van Wyk (scrum master)
+* Rebekah van Wyk (Scrum Master)
 * Atiyya Hoosain
 * Zagesh Parshotam
 
