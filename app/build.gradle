@@ -62,5 +62,10 @@ dependencies {
     implementation fileTree(dir: 'libs',include: ['*.jar'])
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    def androidx_test = "1.1.0"
+    androidTestImplementation "androidx.test:runner:$androidx_test"
+    androidTestImplementation "androidx.test:core:$androidx_test"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"
+
 
 }
