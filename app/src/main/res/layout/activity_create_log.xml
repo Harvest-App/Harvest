@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".CreateLog"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/createLog">
 
     <TextView
         android:id="@+id/createInstruction"

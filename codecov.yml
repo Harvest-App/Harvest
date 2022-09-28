@@ -1,0 +1,3 @@
+ignore:
+    - "**/BarGraph.java"
+    
