@@ -36,9 +36,4 @@ public class CreateLogTest {
 //    public void isActivityInView(){
 //        onView(withId(R.id.createLog)).check(matches(isDisplayed()));
 //    }
-//
-//    @Test
-//    public void loginTextTest() {
-//        onView(withId(R.id.createInstruction)).check(matches(isDisplayed()));
-//    }
 }
