@@ -65,7 +65,7 @@ public class MainActivityAndroidTest {
         onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("asdf@gmail.com"));
         onView(withId(R.id.loginPassword)).perform(ViewActions.typeText(""));
         onView(withId(R.id.login)).perform(ViewActions.click());
-        onView(withId(R.id.loginEmail)).check(matches(hasErrorText("Password is a required field")));
+        onView(withId(R.id.loginPassword)).check(matches(hasErrorText("Password is a required field")));
 
     }
 
