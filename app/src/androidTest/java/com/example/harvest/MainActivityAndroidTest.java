@@ -3,6 +3,7 @@ package com.example.harvest;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -11,6 +12,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import android.view.View;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -42,8 +44,10 @@ public class MainActivityAndroidTest {
 
     @Test
     public void isPasswordLengthErrorMessage(){
-        onView(withId(R.id.loginPassword)).perform(typeText("abc"));
-        onView(withId(R.id.loginPassword)).check(matches(withText("Password length must be at least 6 characters")));
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("abc@gmail.com"));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("abc"));
+        onView(withId(R.id.login)).perform(ViewActions.click());
+        onView(withId(R.id.loginPassword)).check(matches(hasErrorText("Password length must be at least 6 characters")));
 
     }
 
