@@ -43,6 +43,33 @@ public class MainActivityAndroidTest {
     }
 
     @Test
+    public void isEmailEmpty(){
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText(""));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("123456"));
+        onView(withId(R.id.login)).perform(ViewActions.click());
+        onView(withId(R.id.loginEmail)).check(matches(hasErrorText("Email is a required field")));
+
+    }
+
+    @Test
+    public void isEmailValid(){
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("asdf"));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("123456"));
+        onView(withId(R.id.login)).perform(ViewActions.click());
+        onView(withId(R.id.loginEmail)).check(matches(hasErrorText("Invalid email address")));
+
+    }
+
+    @Test
+    public void isPasswordEmpty(){
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("asdf@gmail.com"));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText(""));
+        onView(withId(R.id.login)).perform(ViewActions.click());
+        onView(withId(R.id.loginEmail)).check(matches(hasErrorText("Password is a required field")));
+
+    }
+
+    @Test
     public void isPasswordLengthErrorMessage(){
         onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("abc@gmail.com"));
         onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("abc"));
