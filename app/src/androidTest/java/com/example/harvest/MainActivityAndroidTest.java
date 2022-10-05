@@ -1,9 +1,11 @@
 package com.example.harvest;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 
 import android.view.View;
@@ -39,8 +41,10 @@ public class MainActivityAndroidTest {
     }
 
     @Test
-    public void isButtonInView(){
-        onView(withId(R.id.login)).check(matches(isDisplayed()));
+    public void isPasswordLengthErrorMessage(){
+        onView(withId(R.id.loginPassword)).perform(typeText("abc"));
+        onView(withId(R.id.loginPassword)).check(matches(withText("Password length must be at least 6 characters")));
+
     }
 
 }
