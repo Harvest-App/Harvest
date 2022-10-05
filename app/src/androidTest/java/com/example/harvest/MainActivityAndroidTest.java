@@ -38,4 +38,9 @@ public class MainActivityAndroidTest {
         onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
     }
 
+    @Test
+    public void isButtonInView(){
+        onView(withId(R.id.login)).check(matches(isDisplayed()));
+    }
+
 }
