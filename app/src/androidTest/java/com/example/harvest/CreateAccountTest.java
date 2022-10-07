@@ -44,7 +44,7 @@ public class CreateAccountTest {
         onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
         onView(withId(R.id.email)).perform(ViewActions.typeText("123@456.com"));
         onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
-        onView(withId(R.id.createAccount)).perform(ViewActions.click());
+        onView(withId(R.id.createaccount)).perform(ViewActions.click());
         onView(withId(R.id.fullname)).check(matches(hasErrorText("Full name is a required field")));
 
     }
@@ -55,7 +55,7 @@ public class CreateAccountTest {
         onView(withId(R.id.username)).perform(ViewActions.typeText(""));
         onView(withId(R.id.email)).perform(ViewActions.typeText("123@456.com"));
         onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
-        onView(withId(R.id.createAccount)).perform(ViewActions.click());
+        onView(withId(R.id.createaccount)).perform(ViewActions.click());
         onView(withId(R.id.username)).check(matches(hasErrorText("Username is a required field")));
 
     }
@@ -66,7 +66,7 @@ public class CreateAccountTest {
         onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
         onView(withId(R.id.email)).perform(ViewActions.typeText(""));
         onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
-        onView(withId(R.id.createAccount)).perform(ViewActions.click());
+        onView(withId(R.id.createaccount)).perform(ViewActions.click());
         onView(withId(R.id.email)).check(matches(hasErrorText("Email is a required field")));
 
     }
@@ -77,7 +77,7 @@ public class CreateAccountTest {
         onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
         onView(withId(R.id.email)).perform(ViewActions.typeText("123@456.com"));
         onView(withId(R.id.password)).perform(ViewActions.typeText(""));
-        onView(withId(R.id.createAccount)).perform(ViewActions.click());
+        onView(withId(R.id.createaccount)).perform(ViewActions.click());
         onView(withId(R.id.password)).check(matches(hasErrorText("Password is a required field")));
 
     }
@@ -88,7 +88,7 @@ public class CreateAccountTest {
         onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
         onView(withId(R.id.email)).perform(ViewActions.typeText("123@456.com"));
         onView(withId(R.id.password)).perform(ViewActions.typeText("123"));
-        onView(withId(R.id.createAccount)).perform(ViewActions.click());
+        onView(withId(R.id.createaccount)).perform(ViewActions.click());
         onView(withId(R.id.password)).check(matches(hasErrorText("Password length must be at least 6 characters")));
 
     }
@@ -99,7 +99,7 @@ public class CreateAccountTest {
         onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
         onView(withId(R.id.email)).perform(ViewActions.typeText("123456com"));
         onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
-        onView(withId(R.id.createAccount)).perform(ViewActions.click());
+        onView(withId(R.id.createaccount)).perform(ViewActions.click());
         onView(withId(R.id.email)).check(matches(hasErrorText("Invalid email address")));
 
     }
@@ -110,7 +110,7 @@ public class CreateAccountTest {
         onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
         onView(withId(R.id.email)).perform(ViewActions.typeText("123@456.com"));
         onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
-        onView(withId(R.id.createAccount)).perform(ViewActions.click());
+        onView(withId(R.id.createaccount)).perform(ViewActions.click());
         onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
 
     }

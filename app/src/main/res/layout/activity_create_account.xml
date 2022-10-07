@@ -70,7 +70,7 @@
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/createAccount"
+        android:id="@+id/createaccount"
         android:text="Create Account"
         android:backgroundTint="#c36c04"
         android:layout_width="380dp"
