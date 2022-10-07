@@ -29,12 +29,15 @@ public class MainActivityAndroidTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mainActivityActivityScenarioRule = new ActivityScenarioRule<MainActivity>(MainActivity.class);
+    public ActivityScenarioRule<CreateAccount> createAccountActivityScenarioRule = new ActivityScenarioRule<CreateAccount>(CreateAccount.class);
 
     private ActivityScenario<MainActivity> mainActivity = null;
+    private ActivityScenario<CreateAccount> createAccount = null;
 
     @Before
     public void setup() throws Exception{
         mainActivity = mainActivityActivityScenarioRule.getScenario();
+        createAccount = createAccountActivityScenarioRule.getScenario();
     }
 
     @Test
@@ -44,7 +47,6 @@ public class MainActivityAndroidTest {
 
     @Test
     public void isEmailEmpty(){
-        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText(""));
         onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("123456"));
         onView(withId(R.id.login)).perform(ViewActions.click());
         onView(withId(R.id.loginEmail)).check(matches(hasErrorText("Email is a required field")));
@@ -84,10 +86,10 @@ public class MainActivityAndroidTest {
         onView(withId(R.id.CreateAccount)).check(matches(isDisplayed()));
     }
 
-    @Test
-    public void viewChangesToForgotPassword(){
-        onView(withId(R.id.login)).perform(ViewActions.click());
-        onView(withId(R.id.ForgotPassword)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void viewChangesToForgotPassword(){
+//        onView(withId(R.id.login)).perform(ViewActions.click());
+//        onView(withId(R.id.ForgotPassword)).check(matches(isDisplayed()));
+//    }
 
 }
