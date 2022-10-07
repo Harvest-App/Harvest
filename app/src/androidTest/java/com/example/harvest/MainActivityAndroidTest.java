@@ -96,4 +96,13 @@ public class MainActivityAndroidTest {
 
     }
 
+    @Test
+    public void successfullLogin(){
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("zagesh2000@gmail.com"));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("ziggy2000"));
+        onView(withId(R.id.login)).perform(ViewActions.click());
+        onView(withId(R.id.ProfileActivity)).check(matches(isDisplayed()));
+
+    }
+
 }
