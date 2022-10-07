@@ -24,6 +24,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -92,7 +93,7 @@ public class MainActivityAndroidTest {
     @Test
     public void viewChangesToForgotPassword(){
         onView(withId(R.id.forgotPassword)).perform(ViewActions.click());
-        onView(withId(R.id.ForgotPassword)).check(matches(isDisplayed()));
+        onView(withId(R.id.FOrgotPassword)).check(matches(isDisplayed()));
 
     }
 
@@ -105,4 +106,8 @@ public class MainActivityAndroidTest {
 
     }
 
+    @After
+    public void tearDown() throws Exception {
+        mainActivity = null;
+    }
 }
