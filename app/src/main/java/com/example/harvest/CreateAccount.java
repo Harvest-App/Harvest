@@ -51,7 +51,7 @@ public class CreateAccount extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.password);
         editTextUsername = (EditText) findViewById(R.id.username);
 
-        registerUser = (TextView) findViewById(R.id.createAccount);
+        registerUser = (TextView) findViewById(R.id.createaccount);
         registerUser.setOnClickListener(view -> {
             registerUser();
         });
