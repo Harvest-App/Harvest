@@ -78,4 +78,16 @@ public class MainActivityAndroidTest {
 
     }
 
+    @Test
+    public void viewChangesToCreateAccount(){
+        onView(withId(R.id.login)).perform(ViewActions.click());
+        onView(withId(R.id.CreateAccount)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void viewChangesToForgotPassword(){
+        onView(withId(R.id.login)).perform(ViewActions.click());
+        onView(withId(R.id.ForgotPassword)).check(matches(isDisplayed()));
+    }
+
 }
