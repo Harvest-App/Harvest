@@ -89,10 +89,11 @@ public class MainActivityAndroidTest {
 
     }
 
-//    @Test
-//    public void viewChangesToForgotPassword(){
-//        onView(withId(R.id.login)).perform(ViewActions.click());
-//        onView(withId(R.id.ForgotPassword)).check(matches(isDisplayed()));
-//    }
+    @Test
+    public void viewChangesToForgotPassword(){
+        onView(withId(R.id.forgotPassword)).perform(ViewActions.click());
+        onView(withId(R.id.ForgotPassword)).check(matches(isDisplayed()));
+
+    }
 
 }
