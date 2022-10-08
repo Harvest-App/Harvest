@@ -6,6 +6,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -30,6 +31,9 @@ public class ProfileActivityTest {
 
     @Test
     public void isActivityInView(){
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("zagesh2000@gmail.com"));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("ziggy2000"));
+        onView(withId(R.id.login)).perform(ViewActions.click());
         onView(withId(R.id.ProfileActivity)).check(matches(isDisplayed()));
     }
 }

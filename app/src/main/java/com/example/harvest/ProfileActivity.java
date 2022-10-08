@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,8 +30,6 @@ public class ProfileActivity extends AppCompatActivity {
     private Button logOut;
     private Button addLog;
     private TextView heading;
-
-    String currentUserID;
 
     //firestore database, documents and collection
     private FirebaseFirestore db;
@@ -98,11 +95,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private void EventChangeListener () {
-        FirebaseUser mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(mFirebaseUser != null) {
-            currentUserID = mFirebaseUser.getUid(); //To avoid Null Pointer Exception
-        }
-        db.collection("users").document(currentUserID).collection("Logs")
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs")
                 .orderBy("timeCreated", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
