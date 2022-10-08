@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,7 +23,6 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -31,6 +31,8 @@ public class ProfileActivity extends AppCompatActivity {
     private Button logOut;
     private Button addLog;
     private TextView heading;
+
+    String currentUserID;
 
     //firestore database, documents and collection
     private FirebaseFirestore db;
@@ -96,7 +98,11 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private void EventChangeListener () {
-        db.collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).collection("Logs")
+        FirebaseUser mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(mFirebaseUser != null) {
+            currentUserID = mFirebaseUser.getUid(); //To avoid Null Pointer Exception
+        }
+        db.collection("users").document(currentUserID).collection("Logs")
                 .orderBy("timeCreated", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -108,7 +114,6 @@ public class ProfileActivity extends AppCompatActivity {
                             Toast.makeText(ProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        assert value != null;
                         for (DocumentChange dc : value.getDocumentChanges()) {
                             if (dc.getType() == DocumentChange.Type.ADDED) {
                                 OurLog thisLog=dc.getDocument().toObject(OurLog.class);
