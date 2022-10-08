@@ -15,21 +15,21 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class CreateLogTest {
+public class CreateLogEntryTest {
 
     @Rule
-    public ActivityScenarioRule<CreateLog> createLogActivityScenarioRule = new ActivityScenarioRule<CreateLog>(CreateLog.class);
+    public ActivityScenarioRule<CreateLogEntry> createLogEntryActivityScenarioRule = new ActivityScenarioRule<CreateLogEntry>(CreateLogEntry.class);
 
-    private ActivityScenario<CreateLog> createLog = null;
+    private ActivityScenario<CreateLogEntry> createLogEntry = null;
 
     @Before
     public void setup() throws Exception{
 
-        createLog = createLogActivityScenarioRule.getScenario();
+        createLogEntry = createLogEntryActivityScenarioRule.getScenario();
     }
 
     @Test
     public void isActivityInView(){
-        onView(withId(R.id.createLog)).check(matches(isDisplayed()));
+        onView(withId(R.id.createLogentry)).check(matches(isDisplayed()));
     }
 }

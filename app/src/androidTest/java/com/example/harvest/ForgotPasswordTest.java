@@ -15,21 +15,21 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class CreateLogTest {
+public class ForgotPasswordTest {
 
     @Rule
-    public ActivityScenarioRule<CreateLog> createLogActivityScenarioRule = new ActivityScenarioRule<CreateLog>(CreateLog.class);
+    public ActivityScenarioRule<ForgotPassword> forgotPasswordActivityScenarioRule = new ActivityScenarioRule<ForgotPassword>(ForgotPassword.class);
 
-    private ActivityScenario<CreateLog> createLog = null;
+    private ActivityScenario<ForgotPassword> forgotPassword = null;
 
     @Before
     public void setup() throws Exception{
 
-        createLog = createLogActivityScenarioRule.getScenario();
+        forgotPassword = forgotPasswordActivityScenarioRule.getScenario();
     }
 
     @Test
     public void isActivityInView(){
-        onView(withId(R.id.createLog)).check(matches(isDisplayed()));
+        onView(withId(R.id.FOrgotPassword)).check(matches(isDisplayed()));
     }
 }
