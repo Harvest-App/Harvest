@@ -22,6 +22,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -95,7 +96,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private void EventChangeListener () {
-        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs")
+        db.collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).collection("Logs")
                 .orderBy("timeCreated", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
