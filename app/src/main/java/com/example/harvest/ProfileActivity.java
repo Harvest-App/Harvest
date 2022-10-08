@@ -22,7 +22,6 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -96,7 +95,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private void EventChangeListener () {
-        db.collection("users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).collection("Logs")
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs")
                 .orderBy("timeCreated", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -108,6 +107,7 @@ public class ProfileActivity extends AppCompatActivity {
                             Toast.makeText(ProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                             return;
                         }
+                        assert value != null;
                         for (DocumentChange dc : value.getDocumentChanges()) {
                             if (dc.getType() == DocumentChange.Type.ADDED) {
                                 OurLog thisLog=dc.getDocument().toObject(OurLog.class);
