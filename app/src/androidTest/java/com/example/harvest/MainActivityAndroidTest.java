@@ -97,14 +97,14 @@ public class MainActivityAndroidTest {
 
     }
 
-    @Test
-    public void isLoginSuccessful(){
-        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
-        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
-        onView(withId(R.id.login)).perform(ViewActions.click());
-        onView(withId(1000011)).check(matches(isDisplayed()));
-
-    }
+//    @Test
+//    public void isLoginSuccessful(){
+//        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
+//        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
+//        onView(withId(R.id.login)).perform(ViewActions.click());
+//        onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
+//
+//    }
 
     @After
     public void tearDown() throws Exception {
