@@ -25,15 +25,14 @@ public class ProfileActivityTest {
 
     @Before
     public void setup() throws Exception{
-
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
+        onView(withId(R.id.login)).perform(ViewActions.click());
         profileActivity = profileActivityActivityScenarioRule.getScenario();
     }
 
     @Test
     public void isActivityInView(){
-        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
-        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
-        onView(withId(R.id.login)).perform(ViewActions.click());
         onView(withId(R.id.ProfileActivity)).check(matches(isDisplayed()));
     }
 }
