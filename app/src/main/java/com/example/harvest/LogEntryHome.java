@@ -31,6 +31,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class LogEntryHome extends AppCompatActivity {
 
@@ -53,7 +54,7 @@ public class LogEntryHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_entry_home);
 
-        String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
+        String logID = (usersRef.document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())).getId();
 
         //initialise UI elements and OnClickListeners
         returnHome = findViewById(R.id.returnHome);
