@@ -102,7 +102,7 @@ public class MainActivityAndroidTest {
         onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
         onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
         onView(withId(R.id.login)).perform(ViewActions.click());
-        onView(withId(R.layout.activity_profile)).check(matches(isDisplayed()));
+        onView(withId(1000011)).check(matches(isDisplayed()));
 
     }
 
