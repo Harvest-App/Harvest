@@ -56,4 +56,12 @@ public class ProfileActivityTest {
         assertNotNull(LandingMonitor);
 
     }
+
+    @Test
+    public void isClickLogSuccessful(){
+        onView(withId(R.id.recyclerView)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
+        assertNotNull(LandingMonitor);
+
+    }
 }
