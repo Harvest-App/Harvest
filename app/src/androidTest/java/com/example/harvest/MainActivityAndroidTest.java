@@ -9,8 +9,10 @@ import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 
+import android.app.Instrumentation;
 import android.content.Intent;
 import android.view.View;
 
@@ -38,6 +40,8 @@ public class MainActivityAndroidTest {
     public ActivityScenarioRule<MainActivity> mainActivityActivityScenarioRule = new ActivityScenarioRule<MainActivity>(MainActivity.class);
 
     private ActivityScenario<MainActivity> mainActivity = null;
+
+    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
 
     @Before
     public void setup() throws Exception{
@@ -104,6 +108,8 @@ public class MainActivityAndroidTest {
         onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
         closeSoftKeyboard();
         onView(withId(R.id.login)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+        assertNotNull(LandingMonitor);
 
     }
 
