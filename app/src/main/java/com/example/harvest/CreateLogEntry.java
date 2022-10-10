@@ -140,7 +140,7 @@ public class CreateLogEntry extends AppCompatActivity {
         LogEntry entry = new LogEntry(FirebaseAuth.getInstance().getCurrentUser().getUid(),produceItem.getFoodType(),produceItem.getSubType(),produceItem.getType(),produceItem.getSuperType(),weight,timeCreated);
         String ID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
 
-        //add log entry to firestore
+        //add log entry to Firestore
         usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs").document(ID).collection("Log Entries").add(entry)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

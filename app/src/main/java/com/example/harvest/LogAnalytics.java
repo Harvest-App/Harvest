@@ -35,6 +35,7 @@ public class LogAnalytics extends AppCompatActivity {
     private TextView displayHeading;
     private EditText produceET;
     private Button barGraph;
+    private Button pieChart;
 
     //Firestore database and paths
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -50,6 +51,7 @@ public class LogAnalytics extends AppCompatActivity {
     private ArrayList<ProduceItem> posList;// to get accurate position
 
     private int sum=0;
+    private String produceName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,8 +94,8 @@ public class LogAnalytics extends AppCompatActivity {
         displayHeading = findViewById(R.id.sumHeading);
         sumData = findViewById(R.id.sumData);
 
-        barGraph = findViewById(R.id.barChart);
-        barGraph.setOnClickListener(new View.OnClickListener() {
+        pieChart = findViewById(R.id.pieChart);
+        pieChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //fetching and editing data from the settext
@@ -107,14 +109,21 @@ public class LogAnalytics extends AppCompatActivity {
                 sumString = sumString.substring(0,sumString.length()-1);
                 sum = Integer.parseInt(sumString);
 
-                String foodString="";
-                foodString=displayHeading.getText().toString();
-                foodString=foodString.substring(0,foodString.length()-1);
-
-                Intent intent = new Intent(LogAnalytics.this , BarGraph.class);
+                Intent intent = new Intent(LogAnalytics.this , PieGraph.class);
                 startActivity(intent);
                 intent.putExtra("sum",sum);
-                intent.putExtra("foodType",foodString);
+                intent.putExtra("foodType",produceName);
+                startActivity(intent);
+            }
+        });
+
+        barGraph = findViewById(R.id.barChart);
+        barGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(LogAnalytics.this , BarGraph.class);
                 startActivity(intent);
 
             }
@@ -124,8 +133,12 @@ public class LogAnalytics extends AppCompatActivity {
         buildRecyclerView();
     }
 
+    public void setProduceName(String produce){
+        produceName=produce;
+    }
     public void analyseLog(String logID){
         String produce = produceET.getText().toString().trim();
+        setProduceName(produce);
         String ID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
 
         //goes through entries in log and fetches the relevant information
@@ -153,6 +166,7 @@ public class LogAnalytics extends AppCompatActivity {
                             displayHead = "Total produce harvested:";
                         }
                         else{
+
                             displayHead = "Total "+produce+" harvested:";
                         }
                         displayHeading.setText(displayHead);
