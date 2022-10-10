@@ -14,22 +14,22 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(AndroidJUnit4.class)
+//@RunWith(AndroidJUnit4.class)
 public class LogEntryHomeTest {
 
-    @Rule
-    public ActivityScenarioRule<LogEntryHome> logEntryHomeActivityScenarioRule = new ActivityScenarioRule<LogEntryHome>(LogEntryHome.class);
-
-    private ActivityScenario<LogEntryHome> logEntryHome = null;
-
-    @Before
-    public void setup() throws Exception{
-
-        logEntryHome = logEntryHomeActivityScenarioRule.getScenario();
-    }
-
-    @Test
-    public void isActivityInView(){
-        onView(withId(R.id.pageLayout)).check(matches(isDisplayed()));
-    }
+//    @Rule
+//    public ActivityScenarioRule<LogEntryHome> logEntryHomeActivityScenarioRule = new ActivityScenarioRule<LogEntryHome>(LogEntryHome.class);
+//
+//    private ActivityScenario<LogEntryHome> logEntryHome = null;
+//
+//    @Before
+//    public void setup() throws Exception{
+//
+//        logEntryHome = logEntryHomeActivityScenarioRule.getScenario();
+//    }
+//
+//    @Test
+//    public void isActivityInView(){
+//        onView(withId(R.id.pageLayout)).check(matches(isDisplayed()));
+//    }
 }

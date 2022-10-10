@@ -3,4 +3,12 @@ ignore:
     - "**/CreateAccountValidation.java"
     - "**/MainAccountValidation.java"
     - "**/ProfileActivity.java"
+    - "**/LogAnalytics.java"
+    - "**/LogEntry.java"
+    - "**/OurLog.java"
+    - "**/ProduceItem.java"
+    - "**/ProfileActivity.java"
+    - "**/RecyclerViewAdapterLog.java"
+    - "**/RecyclerViewAdapter.java"
+    - "**/User.java"
     
