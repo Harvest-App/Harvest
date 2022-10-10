@@ -16,6 +16,7 @@ import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -63,5 +64,10 @@ public class ProfileActivityTest {
         Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
         assertNotNull(LandingMonitor);
 
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        profileActivity = null;
     }
 }
