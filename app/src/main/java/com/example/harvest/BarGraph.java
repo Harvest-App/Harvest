@@ -173,6 +173,24 @@ public class BarGraph extends AppCompatActivity{
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, typeArray);
         ArrayAdapter<String> supertypeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, supertypeArray);
 
+        String [] timePeriods = {"","Past month","Past 6 months","Past year","Past 5 years","All time"};
+        ArrayAdapter<String> timeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, timePeriods);
+        timeSpinner.setAdapter(timeAdapter);
+        timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(timePeriods[i]!=""){
+                    changeTimePeriod(timePeriods[i]);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         categorySpinner.setAdapter(categoryAdapter);
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -180,12 +198,15 @@ public class BarGraph extends AppCompatActivity{
 
                 switch(i){
                     case 0:
-
+                        logDisplayTextView.setText("");
                         category = "produceFood";
+                        timeSpinner.setAdapter(timeAdapter);
                         categoryListSpinner.setAdapter(foodAdapter);
                         categoryListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                timeSpinner.setAdapter(timeAdapter);
+                                logDisplayTextView.setText("");
                                 categoryItem=foodArray[i];
                                 if (foodArray[i] != "") {
 
@@ -202,11 +223,15 @@ public class BarGraph extends AppCompatActivity{
                         });
                         break;
                     case 1:
+                        timeSpinner.setAdapter(timeAdapter);
+                        logDisplayTextView.setText("");
                         category = "produceSubtype";
                         categoryListSpinner.setAdapter(subtypeAdapter);
                         categoryListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                timeSpinner.setAdapter(timeAdapter);
+                                logDisplayTextView.setText("");;
                                 categoryItem=subtypeArray[i];
                                 if(subtypeArray[i]!="") {
 
@@ -223,11 +248,15 @@ public class BarGraph extends AppCompatActivity{
                         });
                         break;
                     case 2:
+                        logDisplayTextView.setText("");
                         category= "produceType";
+                        timeSpinner.setAdapter(timeAdapter);
                         categoryListSpinner.setAdapter(typeAdapter);
                         categoryListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                timeSpinner.setAdapter(timeAdapter);
+                                logDisplayTextView.setText("");
                                 categoryItem=typeArray[i];
                                 if(typeArray[i]!="") {
                                     logEntryList.clear();
@@ -242,11 +271,15 @@ public class BarGraph extends AppCompatActivity{
                         });
                         break;
                     case 3:
+                        logDisplayTextView.setText("");
                         category = "produceSupertype";
+                        timeSpinner.setAdapter(timeAdapter);
                         categoryListSpinner.setAdapter(supertypeAdapter);
                         categoryListSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                logDisplayTextView.setText("");
+                                timeSpinner.setAdapter(timeAdapter);
                                 categoryItem=supertypeArray[i];
                                 if(supertypeArray[i]!="") {
                                     logEntryList.clear();
@@ -268,23 +301,7 @@ public class BarGraph extends AppCompatActivity{
 
             }
         });
-        String [] timePeriods = {"","Past month","Past 6 months","Past year","Past 5 years","All time"};
-        ArrayAdapter<String> timeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, timePeriods);
-        timeSpinner.setAdapter(timeAdapter);
-        timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(timePeriods[i]!=""){
-                    changeTimePeriod(timePeriods[i]);
-                }
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
     }
 
     //method for bar graph data
