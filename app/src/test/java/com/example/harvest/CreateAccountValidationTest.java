@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class CreateAccountTest {
+public class CreateAccountValidationTest {
 
     @Test
     public void aValidPasswordPasses() throws Exception{
@@ -73,5 +73,21 @@ public class CreateAccountTest {
         CreateAccountValidation utils = new CreateAccountValidation();
 
         assertTrue(!utils.isValidUsername(""));
+    }
+
+    @Test
+    public void aValidPasswordPasses2() throws Exception{
+
+        CreateAccountValidation utils = new CreateAccountValidation();
+
+        assertTrue(utils.isValidpassword("123456"));
+    }
+
+    @Test
+    public void aValidPasswordFails2() throws Exception{
+
+        CreateAccountValidation utils = new CreateAccountValidation();
+
+        assertTrue(!utils.isValidpassword(""));
     }
 }

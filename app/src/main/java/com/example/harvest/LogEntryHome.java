@@ -44,7 +44,7 @@ public class LogEntryHome extends AppCompatActivity {
     //firestore database, documents, and collections
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference usersRef = db.collection("users");//what we wanna add nodes to
-    private DocumentReference logRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+    //private DocumentReference logRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
     private CollectionReference allLogsRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs");
 
 
@@ -53,7 +53,12 @@ public class LogEntryHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_entry_home);
 
-        String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
+        String logID = "";
+
+        FirebaseUser mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(mFirebaseUser != null) {
+            logID = (usersRef.document(mFirebaseUser.getUid())).getId(); //Do what you need to do with the id
+        }
 
         //initialise UI elements and OnClickListeners
         returnHome = findViewById(R.id.returnHome);

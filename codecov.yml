@@ -1,3 +1,6 @@
 ignore:
     - "**/BarGraph.java"
+    - "**/CreateAccountValidation.java"
+    - "**/MainAccountValidation.java"
+    - "**/ProfileActivity.java"
     
