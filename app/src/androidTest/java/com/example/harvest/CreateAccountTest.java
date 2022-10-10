@@ -106,16 +106,16 @@ public class CreateAccountTest {
 
     }
 
-    @Test
-    public void ViewChangeOnSuccess(){
-        onView(withId(R.id.fullname)).perform(ViewActions.typeText("Jeff"));
-        onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
-        onView(withId(R.id.email)).perform(ViewActions.typeText("123@456.com"));
-        onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
-        closeSoftKeyboard();
-        onView(withId(R.id.createaccount)).perform(ViewActions.click());
-        onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
-
-    }
+//    @Test
+//    public void ViewChangeOnSuccess(){
+//        onView(withId(R.id.fullname)).perform(ViewActions.typeText("Jeff"));
+//        onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
+//        onView(withId(R.id.email)).perform(ViewActions.typeText("123@456.com"));
+//        onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
+//        closeSoftKeyboard();
+//        onView(withId(R.id.createaccount)).perform(ViewActions.click());
+//        onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
+//
+//    }
 }
 //
