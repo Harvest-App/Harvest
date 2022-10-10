@@ -6,7 +6,6 @@ ignore:
     - "**/LogEntry.java"
     - "**/OurLog.java"
     - "**/ProduceItem.java"
-    - "**/ProfileActivity.java"
     - "**/RecyclerViewAdapterLog.java"
     - "**/User.java"
     - "**/PieGraph.java"
