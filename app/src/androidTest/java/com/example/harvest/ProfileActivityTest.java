@@ -1,9 +1,15 @@
 package com.example.harvest;
 
+import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+
+import static org.junit.Assert.assertNotNull;
+
+import android.app.Instrumentation;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.action.ViewActions;
@@ -33,5 +39,21 @@ public class ProfileActivityTest {
     public void isActivityInView(){
 
         onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isLogoutSuccessful(){
+        onView(withId(R.id.logOut)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
+        assertNotNull(LandingMonitor);
+
+    }
+
+    @Test
+    public void isAddLogSuccessful(){
+        onView(withId(R.id.addLog)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(CreateLog.class.getName(),null,false);
+        assertNotNull(LandingMonitor);
+
     }
 }
