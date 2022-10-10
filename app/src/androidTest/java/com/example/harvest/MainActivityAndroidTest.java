@@ -1,5 +1,6 @@
 package com.example.harvest;
 
+import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -97,14 +98,14 @@ public class MainActivityAndroidTest {
 
     }
 
-//    @Test
-//    public void isLoginSuccessful(){
-//        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
-//        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
-//        onView(withId(R.id.login)).perform(ViewActions.click());
-//        onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
-//
-//    }
+    @Test
+    public void isLoginSuccessful(){
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
+        closeSoftKeyboard();
+        onView(withId(R.id.login)).perform(ViewActions.click());
+
+    }
 
     @After
     public void tearDown() throws Exception {
