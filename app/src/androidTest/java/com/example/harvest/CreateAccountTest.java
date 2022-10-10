@@ -38,16 +38,16 @@ public class CreateAccountTest {
         onView(withId(R.id.CreateAccount)).check(matches(isDisplayed()));
     }
 
-//    @Test
-//    public void isFullNameEmpty(){
-//        onView(withId(R.id.fullname)).perform(ViewActions.typeText(""));
-//        onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
-//        onView(withId(R.id.email)).perform(ViewActions.typeText("123@456.com"));
-//        onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
-//        onView(withId(R.id.createaccount)).perform(ViewActions.click());
-//        onView(withId(R.id.fullname)).check(matches(hasErrorText("Full name is a required field")));
-//
-//    }
+    @Test
+    public void isFullNameEmpty(){
+        onView(withId(R.id.fullname)).perform(ViewActions.typeText(""));
+        onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
+        onView(withId(R.id.email)).perform(ViewActions.typeText("123@gmail.com"));
+        onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
+        onView(withId(R.id.createaccount)).perform(ViewActions.click());
+        onView(withId(R.id.fullname)).check(matches(hasErrorText("Full name is a required field")));
+
+    }
 //
 //    @Test
 //    public void isUserNameEmpty(){

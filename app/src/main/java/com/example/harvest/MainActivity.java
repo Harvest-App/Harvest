@@ -52,17 +52,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         forgotPassword = (TextView) findViewById(R.id.forgotPassword);
         forgotPassword.setOnClickListener(this);
     }
-    @Override
-    public void onStart() {//display user's home page instead of login page if user is logged in
-        super.onStart();
+//    @Override
+//    public void onStart() {//display user's home page instead of login page if user is logged in
+//        super.onStart();
+//
+//        // Check if user is signed in (non-null) and update UI accordingly
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if (currentUser != null) {
+//            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+//
+//        }
+//    }
 
-        // Check if user is signed in (non-null) and update UI accordingly
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-
-        }
-    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
