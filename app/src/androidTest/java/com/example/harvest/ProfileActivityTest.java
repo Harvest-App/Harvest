@@ -15,25 +15,23 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-//@RunWith(AndroidJUnit4.class)
+@RunWith(AndroidJUnit4.class)
 public class ProfileActivityTest {
 
-//    @Rule
-//    public ActivityScenarioRule<ProfileActivity> profileActivityActivityScenarioRule = new ActivityScenarioRule<ProfileActivity>(ProfileActivity.class);
-//
-//    private ActivityScenario<ProfileActivity> profileActivity = null;
-//
-//    @Before
-//    public void setup() throws Exception{
-//
-//        profileActivity = profileActivityActivityScenarioRule.getScenario();
-//    }
-//
-//    @Test
-//    public void isActivityInView(){
-//        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
-//        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
-//        onView(withId(R.id.login)).perform(ViewActions.click());
-//        onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
-//    }
+    @Rule
+    public ActivityScenarioRule<ProfileActivity> profileActivityActivityScenarioRule = new ActivityScenarioRule<ProfileActivity>(ProfileActivity.class);
+
+    private ActivityScenario<ProfileActivity> profileActivity = null;
+
+    @Before
+    public void setup() throws Exception{
+
+        profileActivity = profileActivityActivityScenarioRule.getScenario();
+    }
+
+    @Test
+    public void isActivityInView(){
+
+        onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
+    }
 }
