@@ -7,7 +7,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
+import static org.junit.Assert.assertNotNull;
+
+import android.app.Instrumentation;
 import android.content.Intent;
 import android.widget.Toast;
 
@@ -107,14 +111,16 @@ public class CreateAccountTest {
 
     }
 
-//    @Test
-//    public void ViewChangeOnSuccess(){
-//        onView(withId(R.id.fullname)).perform(ViewActions.typeText("Jeff"));
-//        onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
-//        onView(withId(R.id.email)).perform(ViewActions.typeText("123@456.com"));
-//        onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
-//        closeSoftKeyboard();
-//        onView(withId(R.id.createaccount)).perform(ViewActions.click());
-//
-//    }
+    @Test
+    public void ViewChangeOnSuccess(){
+        onView(withId(R.id.fullname)).perform(ViewActions.typeText("Jeff"));
+        onView(withId(R.id.username)).perform(ViewActions.typeText("jefferson"));
+        onView(withId(R.id.email)).perform(ViewActions.typeText("123@456.com"));
+        onView(withId(R.id.password)).perform(ViewActions.typeText("123456"));
+        closeSoftKeyboard();
+        onView(withId(R.id.createaccount)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
+        assertNotNull(LandingMonitor);
+
+    }
 }
