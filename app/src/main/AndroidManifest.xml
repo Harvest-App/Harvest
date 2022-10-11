@@ -14,9 +14,6 @@
         android:theme="@style/Theme.Harvest"
         tools:targetApi="31">
         <activity
-            android:name=".BarBase"
-            android:exported="false" />
-        <activity
             android:name=".PieGraph"
             android:exported="false" />
         <activity
