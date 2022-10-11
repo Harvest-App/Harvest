@@ -90,7 +90,7 @@ public class LogEntryHome extends AppCompatActivity {
 
     //fetch and display log entries, filter latest on top
 
-    public void loadLogEntries(String logID){//fetches log entries from firestore
+    public void loadLogEntries(String logID){//fetches log entries from Firestore
         allLogsRef.document(logID).collection("Log Entries").orderBy("timeCreated", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

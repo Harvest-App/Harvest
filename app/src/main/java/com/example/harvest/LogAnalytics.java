@@ -124,6 +124,7 @@ public class LogAnalytics extends AppCompatActivity {
 
 
                 Intent intent = new Intent(LogAnalytics.this , BarGraph.class);
+              //  Intent intent = new Intent(LogAnalytics.this , BarBase.class);
                 startActivity(intent);
 
             }

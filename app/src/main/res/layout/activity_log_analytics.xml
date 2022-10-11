@@ -73,7 +73,7 @@
 
     <Button
         android:id="@+id/barChart"
-        android:text="View bar graph"
+        android:text="entry filtering"
         android:backgroundTint="#c36c04"
         android:layout_width="380dp"
         android:layout_height="50dp"
