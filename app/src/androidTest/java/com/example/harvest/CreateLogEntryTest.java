@@ -47,6 +47,7 @@ public class CreateLogEntryTest {
     @Test
     public void isProduceWeightEmpty(){
         onView(withId(R.id.produceET)).perform(ViewActions.typeText("Almond"));
+        closeSoftKeyboard();
         onView(withId(R.id.weightET)).perform(ViewActions.typeText(""));
         closeSoftKeyboard();
         onView(withId(R.id.addLogEntry)).perform(ViewActions.click());
