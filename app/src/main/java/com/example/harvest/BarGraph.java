@@ -59,7 +59,6 @@ public class BarGraph extends AppCompatActivity{
     private TextView logDisplayTextView;
 
     //variables
-    ArrayList barArraylist;
     private ArrayList<ProduceItem> mProduceList;
     private ArrayList<String> foodList;
     private ArrayList<String> subtypeList;
@@ -74,12 +73,10 @@ public class BarGraph extends AppCompatActivity{
     String supertypeArray[];
     private String category;
     private String categoryItem;
-    private float sumProduce;
-    private String foodType;
 
     //Firestore database, documents, and collections
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference usersRef = db.collection("users");//what we wanna add nodes to
+    private CollectionReference usersRef = db.collection("users");
     private DocumentReference logRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
     private CollectionReference allLogsRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs");
 
@@ -87,12 +84,6 @@ public class BarGraph extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar_graph);
-
-        Intent intent = getIntent();
-        if(intent!=null){
-            sumProduce = getIntent().getIntExtra("sum",0) ;
-            foodType=getIntent().getStringExtra("foodType");
-        }
 
         //ID for loading log entries
         String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
@@ -116,25 +107,6 @@ public class BarGraph extends AppCompatActivity{
             }
         });
 
-
-        //bar chart information
-        BarChart barChart = findViewById(R.id.barChart);
-
-        //call the statement to initialise before passing it to the dataset
-        getData();
-        BarDataSet barDataSet = new BarDataSet(barArraylist, foodType);
-
-        //pass the data sets into here
-        BarData barData = new BarData(barDataSet);
-        barChart.setData(barData);
-
-        //setting colours and text size
-        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(16f);
-
-        //small description
-        barChart.getDescription().setEnabled(false);
 
         //for displaying filtered log entries
         logDisplayTextView=findViewById(R.id.logDisplay);
@@ -301,15 +273,6 @@ public class BarGraph extends AppCompatActivity{
 
             }
         });
-
-    }
-
-    //method for bar graph data
-    private void getData(){
-        barArraylist = new ArrayList();
-
-        //adding the new entries
-        barArraylist.add(new BarEntry(2f,sumProduce));
 
     }
 
