@@ -64,8 +64,7 @@ public class ProfileActivityTest {
     @Test
     public void isLogEntryClickSuccessful(){
         onView(withId(R.id.recyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
-        Instrumentation.ActivityMonitor Lmonitor = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
-        assertNotNull(Lmonitor);
+        onView(withId(R.id.pageLayout)).check(matches(isDisplayed()));
 
     }
 
