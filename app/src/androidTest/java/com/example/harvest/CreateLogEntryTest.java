@@ -1,11 +1,14 @@
 package com.example.harvest;
 
+import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -31,5 +34,23 @@ public class CreateLogEntryTest {
     @Test
     public void isActivityInView(){
         onView(withId(R.id.createLogentry)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isProduceTypeEmpty(){
+        onView(withId(R.id.produceET)).perform(ViewActions.typeText(""));
+        closeSoftKeyboard();
+        onView(withId(R.id.addLogEntry)).perform(ViewActions.click());
+        onView(withId(R.id.produceET)).check(matches(hasErrorText("Enter produce type")));
+    }
+
+    @Test
+    public void isProduceWeightEmpty(){
+        onView(withId(R.id.produceET)).perform(ViewActions.typeText("Almond"));
+        closeSoftKeyboard();
+        onView(withId(R.id.weightET)).perform(ViewActions.typeText(""));
+        closeSoftKeyboard();
+        onView(withId(R.id.addLogEntry)).perform(ViewActions.click());
+        onView(withId(R.id.produceET)).check(matches(hasErrorText("Enter produce type")));
     }
 }

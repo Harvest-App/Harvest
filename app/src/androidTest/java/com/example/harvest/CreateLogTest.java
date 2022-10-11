@@ -1,5 +1,6 @@
 package com.example.harvest;
 
+import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
@@ -41,15 +42,9 @@ public class CreateLogTest {
     }
 
     @Test
-    public void isReturnHomeSuccessful(){
-        onView(withId(R.id.returnHome)).perform(ViewActions.click());
-        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
-        assertNotNull(LandingMonitor);
-    }
-
-    @Test
     public void isLogNameEmpty(){
         onView(withId(R.id.logName)).perform(ViewActions.typeText(""));
+        closeSoftKeyboard();
         onView(withId(R.id.addLog)).perform(ViewActions.click());
         onView(withId(R.id.logName)).check(matches(hasErrorText("Enter log name to proceed")));
     }
