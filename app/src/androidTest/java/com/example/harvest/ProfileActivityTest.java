@@ -52,6 +52,7 @@ public class ProfileActivityTest {
 
     @Test
     public void isAddLogSuccessful(){
+        Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
         onView(withId(R.id.addLog)).perform(ViewActions.click());
         Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(CreateLog.class.getName(),null,false);
         assertNotNull(LandingMonitor);
