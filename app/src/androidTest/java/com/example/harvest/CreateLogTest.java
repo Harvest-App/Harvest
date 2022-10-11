@@ -2,10 +2,17 @@ package com.example.harvest;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+
+import static org.junit.Assert.assertNotNull;
+
+import android.app.Instrumentation;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -31,5 +38,19 @@ public class CreateLogTest {
     @Test
     public void isActivityInView(){
         onView(withId(R.id.createLog)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isReturnHomeSuccessful(){
+        onView(withId(R.id.returnHome)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+        assertNotNull(LandingMonitor);
+    }
+
+    @Test
+    public void isLogNameEmpty(){
+        onView(withId(R.id.logName)).perform(ViewActions.typeText(""));
+        onView(withId(R.id.addLog)).perform(ViewActions.click());
+        onView(withId(R.id.logName)).check(matches(hasErrorText("Enter log name to proceed")));
     }
 }
