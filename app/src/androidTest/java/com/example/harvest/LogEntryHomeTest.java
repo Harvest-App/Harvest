@@ -19,24 +19,24 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(AndroidJUnit4.class)
+//@RunWith(AndroidJUnit4.class)
 public class LogEntryHomeTest {
 
-    @Rule
-    public ActivityScenarioRule<LogEntryHome> logEntryHomeActivityScenarioRule = new ActivityScenarioRule<LogEntryHome>(LogEntryHome.class);
-
-    private ActivityScenario<LogEntryHome> logEntryHome = null;
-
-    Instrumentation.ActivityMonitor m = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
-
-    @Before
-    public void setup() throws Exception{
-
-        logEntryHome = logEntryHomeActivityScenarioRule.getScenario();
-    }
-
-    @Test
-    public void isActivityInView(){
-        assertNotNull(m);
-    }
+//    @Rule
+//    public ActivityScenarioRule<LogEntryHome> logEntryHomeActivityScenarioRule = new ActivityScenarioRule<LogEntryHome>(LogEntryHome.class);
+//
+//    private ActivityScenario<LogEntryHome> logEntryHome = null;
+//
+//    Instrumentation.ActivityMonitor m = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
+//
+//    @Before
+//    public void setup() throws Exception{
+//
+//        logEntryHome = logEntryHomeActivityScenarioRule.getScenario();
+//    }
+//
+//    @Test
+//    public void isActivityInView(){
+//        assertNotNull(m);
+//    }
 }
