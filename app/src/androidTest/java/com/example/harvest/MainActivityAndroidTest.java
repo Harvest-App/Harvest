@@ -20,6 +20,7 @@ import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -110,6 +111,18 @@ public class MainActivityAndroidTest {
         onView(withId(R.id.login)).perform(ViewActions.click());
         Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
         assertNotNull(LandingMonitor);
+
+    }
+    @Test
+    public void fakeTest(){
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
+        closeSoftKeyboard();
+        onView(withId(R.id.login)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+        onView(withId(R.id.recyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
+        Instrumentation.ActivityMonitor Lmonitor = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
+        assertNotNull(Lmonitor);
 
     }
 
