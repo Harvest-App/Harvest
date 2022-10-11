@@ -31,6 +31,8 @@ public class ProfileActivityTest {
 
     private ActivityScenario<ProfileActivity> profileActivity = null;
 
+    Instrumentation.ActivityMonitor m = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+
     @Before
     public void setup() throws Exception{
 
@@ -53,7 +55,6 @@ public class ProfileActivityTest {
 
     @Test
     public void isAddLogSuccessful(){
-        Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
         onView(withId(R.id.addLog)).perform(ViewActions.click());
         Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(CreateLog.class.getName(),null,false);
         assertNotNull(LandingMonitor);
