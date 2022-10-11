@@ -60,7 +60,7 @@ public class ProfileActivityTest {
 
     @Test
     public void isSelectLogSuccessful(){
-        onView(withId(R.layout.class_profile_log)).perform(ViewActions.click());
+        onView(withId(R.id.recyclerView)).perform(ViewActions.click());
         Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
         assertNotNull(LandingMonitor);
 
