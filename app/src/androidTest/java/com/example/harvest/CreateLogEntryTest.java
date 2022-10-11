@@ -51,6 +51,6 @@ public class CreateLogEntryTest {
         onView(withId(R.id.weightET)).perform(ViewActions.typeText(""));
         closeSoftKeyboard();
         onView(withId(R.id.addLogEntry)).perform(ViewActions.click());
-        onView(withId(R.id.produceET)).check(matches(hasErrorText("Enter produce weight")));
+        onView(withId(R.id.weightET)).check(matches(hasErrorText("Enter produce weight")));
     }
 }
