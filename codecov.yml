@@ -9,5 +9,4 @@ ignore:
     - "**/RecyclerViewAdapterLog.java"
     - "**/User.java"
     - "**/PieGraph.java"
-    - "**/LogEntryHome.java"
     
