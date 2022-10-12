@@ -11,4 +11,5 @@ ignore:
     - "**/BarGraph.java"
     - "**/LogEntryHome.java"
     - "**/CreateLog.java"
+    - "**/BarGraphValidation.java"
     
