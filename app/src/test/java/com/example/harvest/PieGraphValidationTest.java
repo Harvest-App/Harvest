@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class PieGraphValidationTest {
 
+    // Tests to see if calculation is correct
     @Test
     public void applePercentagePasses() throws Exception{
 
@@ -16,6 +17,7 @@ public class PieGraphValidationTest {
         assertEquals(exp, utils.getApplePercentage(1223), 0.01);
     }
 
+    // Tests to see if wrong calculation fails
     @Test
     public void applePercentageFails() throws Exception{
 
@@ -26,6 +28,7 @@ public class PieGraphValidationTest {
         assertNotEquals(exp, utils.getApplePercentage(1223), 0.01);
     }
 
+    // Tests to see if calculation is correct
     @Test
     public void BlueBerryPercentagePasses() throws Exception{
 
@@ -36,6 +39,7 @@ public class PieGraphValidationTest {
         assertEquals(exp, utils.getBlueBerryPercentage(1223), 0.01);
     }
 
+    // Tests to see if wrong calculation fails
     @Test
     public void BlueBerryPercentageFails() throws Exception{
 
@@ -46,6 +50,7 @@ public class PieGraphValidationTest {
         assertNotEquals(exp, utils.getBlueBerryPercentage(1223), 0.01);
     }
 
+    // Tests to see if calculation is correct
     @Test
     public void AlmondPercentagePasses() throws Exception{
 
@@ -56,6 +61,7 @@ public class PieGraphValidationTest {
         assertEquals(exp, utils.getAlmondPercentage(1223), 0.01);
     }
 
+    // Tests to see if wrong calculation fails
     @Test
     public void AlmondPercentageFails() throws Exception{
 
@@ -66,6 +72,7 @@ public class PieGraphValidationTest {
         assertNotEquals(exp, utils.getAlmondPercentage(1223), 0.01);
     }
 
+    // Tests to see if calculation is correct
     @Test
     public void PumpkinPercentagePasses() throws Exception{
 
@@ -76,6 +83,7 @@ public class PieGraphValidationTest {
         assertEquals(exp, utils.getBlueBerryPercentage(1223), 0.01);
     }
 
+    // Tests to see if wrong calculation fails
     @Test
     public void PumpkinPercentageFails() throws Exception{
 
