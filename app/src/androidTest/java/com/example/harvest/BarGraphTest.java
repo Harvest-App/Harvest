@@ -33,6 +33,11 @@ public class BarGraphTest {
 
     @Before
     public void setup() throws Exception{
+        Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
+        closeSoftKeyboard();
+        onView(withId(R.id.login)).perform(ViewActions.click());
 
         barGraph = barGraphActivityScenarioRule.getScenario();
     }
