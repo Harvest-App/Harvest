@@ -1,5 +1,4 @@
 ignore:
-    - "**/BarGraph.java"
     - "**/CreateAccountValidation.java"
     - "**/MainActivityValidation.java"
     - "**/LogAnalytics.java"
@@ -9,5 +8,9 @@ ignore:
     - "**/RecyclerViewAdapterLog.java"
     - "**/User.java"
     - "**/PieGraph.java"
+    - "**/BarGraph.java"
     - "**/LogEntryHome.java"
+    - "**/CreateLog.java"
+    - "**/BarGraphValidation.java"
+    - "**/PieGraphValidation.java"
     

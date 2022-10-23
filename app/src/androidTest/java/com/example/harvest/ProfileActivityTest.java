@@ -13,6 +13,7 @@ import android.app.Instrumentation;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -29,6 +30,8 @@ public class ProfileActivityTest {
     public ActivityScenarioRule<ProfileActivity> profileActivityActivityScenarioRule = new ActivityScenarioRule<ProfileActivity>(ProfileActivity.class);
 
     private ActivityScenario<ProfileActivity> profileActivity = null;
+
+    Instrumentation.ActivityMonitor m = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
 
     @Before
     public void setup() throws Exception{
@@ -58,8 +61,12 @@ public class ProfileActivityTest {
 
     }
 
-    @After
-    public void tearDown() throws Exception {
-        profileActivity = null;
-    }
+//    @Test
+//    public void isLogEntryClickSuccessful(){
+//        onView(withId(R.id.recyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
+//        Instrumentation.ActivityMonitor Lmonitor = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
+//        assertNotNull(Lmonitor);
+//
+//    }
+
 }
