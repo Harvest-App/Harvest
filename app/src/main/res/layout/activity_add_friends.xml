@@ -3,23 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ProfileActivity"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/profileActivity"
-    >
+    tools:context=".AddFriends">
+
 
     <TextView
-        android:id="@+id/logHeading"
+        android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="24dp"
+        android:text="Add friends"
+        android:textSize="35sp"
         android:textAlignment="center"
-        android:text="YOUR LOGS"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textColor="#434a53"
+        android:textColor="#c36c04"
+        android:layout_marginTop="40dp"
+        />
+
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Search for a username or name"
+        android:inputType="textEmailAddress"
+        android:textSize="24sp"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -31,41 +41,42 @@
         android:scrollbars="vertical" />
 
     <Button
-        android:id="@+id/addLog"
-        android:text="Add new log"
+        android:id="@+id/addFriend"
+        android:text="Invite user to log"
         android:backgroundTint="#c36c04"
         android:layout_width="380dp"
         android:layout_height="70dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:textSize="26sp"
         android:textStyle="bold"
-
         />
-    <Button
-        android:id="@+id/friends"
-        android:text="friend tracker"
-        android:backgroundTint="#ce8b35"
-        android:layout_width="380dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textSize="26sp"
-        android:textStyle="bold"
 
-        />
     <Button
-        android:id="@+id/logOut"
-        android:text="Log out"
+        android:id="@+id/returnToLogEntries"
+        android:text="Return to entries"
         android:backgroundTint="#daab65"
         android:layout_width="380dp"
         android:layout_height="70dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:textSize="26sp"
         android:textStyle="bold"
         />
+
+    <Button
+        android:id="@+id/returnHome"
+        android:text="RETURN HOME"
+        android:backgroundTint="#daab65"
+        android:layout_width="380dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        />
+
 </LinearLayout>

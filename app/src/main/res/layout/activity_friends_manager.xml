@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FriendsManager">
+
+
+    <TextView
+        android:id="@+id/Inbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inbox"
+        android:textSize="35sp"
+        android:textAlignment="center"
+        android:textColor="#c36c04"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/inboxRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#FFEEDA"
+        android:padding="4dp"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:id="@+id/outbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Outbox"
+        android:textSize="35sp"
+        android:textAlignment="center"
+        android:textColor="#c36c04"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/outboxRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#FFEEDA"
+        android:padding="4dp"
+        android:scrollbars="vertical" />
+
+
+    <Button
+        android:id="@+id/returnHome"
+        android:text="RETURN HOME"
+        android:backgroundTint="#daab65"
+        android:layout_width="380dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>

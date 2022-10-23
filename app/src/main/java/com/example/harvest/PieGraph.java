@@ -50,7 +50,8 @@ public class PieGraph extends AppCompatActivity {
     private CollectionReference usersRef = db.collection("users");//what we wanna add nodes to
     private DocumentReference logRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
     private CollectionReference allLogsRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs");
-
+    private String ID;
+    private String logName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,8 @@ public class PieGraph extends AppCompatActivity {
         if(intent!=null){
             sumProduce = getIntent().getIntExtra("sum",0) ;
             foodType=getIntent().getStringExtra("foodType");
+            ID=getIntent().getStringExtra("logID");
+            logName = getIntent().getStringExtra("logName");
         }
 
         //UI
@@ -71,6 +74,8 @@ public class PieGraph extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PieGraph.this , LogEntryHome.class);
+                intent.putExtra("logID",ID);
+                intent.putExtra("logName",logName);
                 startActivity(intent);
             }
         });
@@ -80,15 +85,17 @@ public class PieGraph extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PieGraph.this , LogAnalytics.class);
+                intent.putExtra("logID",ID);
+                intent.putExtra("logName",logName);
                 startActivity(intent);
             }
         });
 
         //ID for loading log entries
-        String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
+       // String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
 
         setupPieChart();
-        loadLogEntries(logID);
+        loadLogEntries(ID);
 
     }
     private void setupPieChart() {

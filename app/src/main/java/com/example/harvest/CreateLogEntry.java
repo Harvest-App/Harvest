@@ -48,6 +48,8 @@ public class CreateLogEntry extends AppCompatActivity {
     //Firestore database and paths
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference usersRef = db.collection("users");
+    private String ID;
+    private String logName;
 
     //recyclerview
     private RecyclerView mRecyclerView;
@@ -60,6 +62,12 @@ public class CreateLogEntry extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_log_entry);
+
+        Intent logIdIntent = getIntent();
+        if(logIdIntent!=null){
+            ID=getIntent().getStringExtra("logID");
+            logName = getIntent().getStringExtra("logName");
+        }
 
         createProduceList();
         buildRecyclerView();
@@ -90,8 +98,11 @@ public class CreateLogEntry extends AppCompatActivity {
         //go to activity that displays log entries
         seeEntries=findViewById(R.id.goToLogEntries);
         seeEntries.setOnClickListener(view -> {
-            Intent intent = new Intent(CreateLogEntry.this , LogEntryHome.class);
-            startActivity(intent);
+
+            Intent i = new Intent(CreateLogEntry.this , LogEntryHome.class);
+            i.putExtra("logID",ID);
+            i.putExtra("logName",logName);
+            startActivity(i);
         });
 
         //go to profile
@@ -138,7 +149,7 @@ public class CreateLogEntry extends AppCompatActivity {
 
         //create log entry instance
         LogEntry entry = new LogEntry(FirebaseAuth.getInstance().getCurrentUser().getUid(),produceItem.getFoodType(),produceItem.getSubType(),produceItem.getType(),produceItem.getSuperType(),weight,timeCreated);
-        String ID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
+      //  String ID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
 
         //add log entry to Firestore
         usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs").document(ID).collection("Log Entries").add(entry)
@@ -287,6 +298,7 @@ public class CreateLogEntry extends AppCompatActivity {
                     posList=mProduceList;
                 }
                 produceET.setText(posList.get(position).getFoodType());
+
             }
         });
     }

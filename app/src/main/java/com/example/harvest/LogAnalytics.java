@@ -36,12 +36,15 @@ public class LogAnalytics extends AppCompatActivity {
     private EditText produceET;
     private Button barGraph;
     private Button pieChart;
+    private TextView heading;
 
     //Firestore database and paths
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference usersRef = db.collection("users");
     private CollectionReference allLogsRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs");
     String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
+    private  String ID;
+    private String logName;
 
     //recyclerview
     private RecyclerView mRecyclerView;
@@ -58,8 +61,23 @@ public class LogAnalytics extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_analytics);
 
+
+        //intent to fetch the log ID and the log name
+        Intent logInfoIntent = getIntent();
+        if(logInfoIntent!=null){
+            ID=logInfoIntent.getStringExtra("logID");
+            logName = logInfoIntent.getStringExtra("logName");
+
+        }
+        else{
+            Toast.makeText(LogAnalytics.this, "No intent found", Toast.LENGTH_SHORT).show();
+        }
+
         //initialise UI elements and add OnClickListeners
 
+        heading = findViewById(R.id.heading);
+        String headingText = "Log Analytics:\n"+logName;
+        heading.setText(headingText);
         produceET=findViewById(R.id.produceET);
         produceET.addTextChangedListener(new TextWatcher() {//adding filter functionality
             @Override
@@ -82,6 +100,8 @@ public class LogAnalytics extends AppCompatActivity {
 
         returnToEntries.setOnClickListener(view -> {
             Intent intent = new Intent(LogAnalytics.this , LogEntryHome.class);
+            intent.putExtra("logID",ID);
+            intent.putExtra("logName",logName);
             startActivity(intent);
         });
 
@@ -110,9 +130,11 @@ public class LogAnalytics extends AppCompatActivity {
                 sum = Integer.parseInt(sumString);
 
                 Intent intent = new Intent(LogAnalytics.this , PieGraph.class);
-                startActivity(intent);
+               // startActivity(intent);
                 intent.putExtra("sum",sum);
                 intent.putExtra("foodType",produceName);
+                intent.putExtra("logID",ID);
+                intent.putExtra("logName",logName);
                 startActivity(intent);
             }
         });
@@ -122,9 +144,9 @@ public class LogAnalytics extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 Intent intent = new Intent(LogAnalytics.this , BarGraph.class);
-              //  Intent intent = new Intent(LogAnalytics.this , BarBase.class);
+                intent.putExtra("logID",ID);
+                intent.putExtra("logName",logName);
                 startActivity(intent);
 
             }
@@ -140,7 +162,7 @@ public class LogAnalytics extends AppCompatActivity {
     public void analyseLog(String logID){
         String produce = produceET.getText().toString().trim();
         setProduceName(produce);
-        String ID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
+       // String ID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
 
         //goes through entries in log and fetches the relevant information
         allLogsRef.document(logID).collection("Log Entries")
@@ -311,7 +333,7 @@ public class LogAnalytics extends AppCompatActivity {
                     posList=mProduceList;
                 }
                 produceET.setText(posList.get(position).getFoodType());
-                analyseLog(logID);
+                analyseLog(ID);
             }
         });
     }

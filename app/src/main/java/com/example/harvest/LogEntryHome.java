@@ -40,19 +40,28 @@ public class LogEntryHome extends AppCompatActivity {
     private TextView logDisplayTextView;
     private TextView heading;
     private Button analytics;
+    private Button addFriend;
 
     //firestore database, documents, and collections
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference usersRef = db.collection("users");//what we wanna add nodes to
     private DocumentReference logRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
     private CollectionReference allLogsRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs");
-
-
+    private String ID;
+    private String logName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_entry_home);
 
+        Intent intent = getIntent();
+        if(intent!=null){
+            ID=getIntent().getStringExtra("logID");
+            logName = getIntent().getStringExtra("logName");
+        }
+
+        heading = findViewById(R.id.logHeading);
+        heading.setText(logName);
         String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
 
         //initialise UI elements and OnClickListeners
@@ -66,11 +75,15 @@ public class LogEntryHome extends AppCompatActivity {
         });
 
         addEntry =  findViewById(R.id.addLogEntry);
-        heading = findViewById(R.id.logHeading);
+
         addEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LogEntryHome.this, CreateLogEntry.class));
+               // startActivity(new Intent(LogEntryHome.this, CreateLogEntry.class));
+               Intent i = new Intent(LogEntryHome.this, CreateLogEntry.class);
+                i.putExtra("logID",ID);
+                i.putExtra("logName",logName);
+                startActivity(i);
             }
         });
 
@@ -79,13 +92,31 @@ public class LogEntryHome extends AppCompatActivity {
         analytics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LogEntryHome.this,LogAnalytics.class));
+              //  startActivity(new Intent(LogEntryHome.this,LogAnalytics.class));
+                Intent i = new Intent(LogEntryHome.this, LogAnalytics.class);
+                i.putExtra("logID",ID);
+                i.putExtra("logName",logName);
+                startActivity(i);
             }
         });
 
+        addFriend = findViewById(R.id.addFriend);
+
+        addFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //  startActivity(new Intent(LogEntryHome.this,LogAnalytics.class));
+                Intent i = new Intent(LogEntryHome.this, AddFriends.class);
+                i.putExtra("logID",ID);
+                i.putExtra("logName",logName);
+                startActivity(i);
+            }
+        });
+
+
         logDisplayTextView = findViewById(R.id.logDisplay); //textView to list logs
 
-        loadLogEntries(logID);
+        loadLogEntries(ID);
     }
 
     //fetch and display log entries, filter latest on top

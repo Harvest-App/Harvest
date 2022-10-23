@@ -1,50 +1,49 @@
+package com.example.harvest;
 
-        package com.example.harvest;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import androidx.annotation.NonNull;
-        import androidx.annotation.Nullable;
-        import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.util.Log;
 
-        import android.content.Intent;
-        import android.graphics.Color;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.ArrayAdapter;
-        import android.widget.Button;
-        import android.widget.Spinner;
-        import android.widget.TextView;
-        import android.widget.Toast;
-        import android.util.Log;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-        import com.github.mikephil.charting.charts.BarChart;
-        import com.github.mikephil.charting.data.BarData;
-        import com.github.mikephil.charting.data.BarDataSet;
-        import com.github.mikephil.charting.data.BarEntry;
-        import com.github.mikephil.charting.utils.ColorTemplate;
-        import com.google.android.gms.tasks.OnFailureListener;
-        import com.google.android.gms.tasks.OnSuccessListener;
-        import com.google.firebase.auth.FirebaseAuth;
-        import com.google.firebase.firestore.CollectionReference;
-        import com.google.firebase.firestore.DocumentChange;
-        import com.google.firebase.firestore.DocumentReference;
-        import com.google.firebase.firestore.EventListener;
-        import com.google.firebase.firestore.FirebaseFirestore;
-        import com.google.firebase.firestore.FirebaseFirestoreException;
-        import com.google.firebase.firestore.Query;
-        import com.google.firebase.firestore.QueryDocumentSnapshot;
-        import com.google.firebase.firestore.QuerySnapshot;
-
-        import java.lang.reflect.Array;
-        import java.text.SimpleDateFormat;
-        import java.time.LocalDate;
-        import java.util.ArrayList;
-        import java.util.Arrays;
-        import java.util.Calendar;
-        import java.util.Collections;
-        import java.util.Date;
-        import java.util.GregorianCalendar;
-        import java.util.List;
+import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 public class BarGraph extends AppCompatActivity{
 
@@ -79,14 +78,23 @@ public class BarGraph extends AppCompatActivity{
     private CollectionReference usersRef = db.collection("users");
     private DocumentReference logRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
     private CollectionReference allLogsRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs");
+    private String ID;
+    private String logName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar_graph);
 
+        //intent to get log ID and name
+        Intent intent = getIntent();
+        if(intent!=null){
+            ID=getIntent().getStringExtra("logID");
+            logName = getIntent().getStringExtra("logName");
+        }
+
         //ID for loading log entries
-        String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
+       // String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
 
         //buttons
         entries = findViewById(R.id.returnToEntries);
@@ -94,6 +102,8 @@ public class BarGraph extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BarGraph.this , LogEntryHome.class);
+                intent.putExtra("logID",ID);
+                intent.putExtra("logName",logName);
                 startActivity(intent);
             }
         });
@@ -103,6 +113,8 @@ public class BarGraph extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BarGraph.this , LogAnalytics.class);
+                intent.putExtra("logID",ID);
+                intent.putExtra("logName",logName);
                 startActivity(intent);
             }
         });
@@ -183,7 +195,7 @@ public class BarGraph extends AppCompatActivity{
                                 if (foodArray[i] != "") {
 
                                     logEntryList.clear();
-                                    loadLogEntries(logID);
+                                    loadLogEntries(ID);
 
                                 }
 
@@ -208,7 +220,7 @@ public class BarGraph extends AppCompatActivity{
                                 if(subtypeArray[i]!="") {
 
                                     logEntryList.clear();
-                                    loadLogEntries(logID);
+                                    loadLogEntries(ID);
 
                                 }
                             }
@@ -232,7 +244,7 @@ public class BarGraph extends AppCompatActivity{
                                 categoryItem=typeArray[i];
                                 if(typeArray[i]!="") {
                                     logEntryList.clear();
-                                    loadLogEntries(logID);
+                                    loadLogEntries(ID);
                                 }
                             }
 
@@ -255,7 +267,7 @@ public class BarGraph extends AppCompatActivity{
                                 categoryItem=supertypeArray[i];
                                 if(supertypeArray[i]!="") {
                                     logEntryList.clear();
-                                    loadLogEntries(logID);
+                                    loadLogEntries(ID);
                                 }
                             }
 
