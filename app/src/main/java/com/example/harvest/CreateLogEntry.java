@@ -23,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.text.SimpleDateFormat;
@@ -50,6 +52,7 @@ public class CreateLogEntry extends AppCompatActivity {
     private CollectionReference usersRef = db.collection("users");
     private String ID;
     private String logName;
+    private String[] friendArray;
 
     //recyclerview
     private RecyclerView mRecyclerView;
@@ -63,6 +66,7 @@ public class CreateLogEntry extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_log_entry);
 
+        //fetch intent that provides log information
         Intent logIdIntent = getIntent();
         if(logIdIntent!=null){
             ID=getIntent().getStringExtra("logID");
@@ -76,6 +80,7 @@ public class CreateLogEntry extends AppCompatActivity {
         produceET = findViewById(R.id.produceET);
         weightET = findViewById(R.id.weightET);
 
+        //this checks to see if the text in the edittext has changed
         produceET.addTextChangedListener(new TextWatcher() {//adding filter functionalities
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -100,6 +105,7 @@ public class CreateLogEntry extends AppCompatActivity {
         seeEntries.setOnClickListener(view -> {
 
             Intent i = new Intent(CreateLogEntry.this , LogEntryHome.class);
+            //pass along log information
             i.putExtra("logID",ID);
             i.putExtra("logName",logName);
             startActivity(i);
@@ -119,7 +125,9 @@ public class CreateLogEntry extends AppCompatActivity {
         });
     }
 
-    void createLogEntry(){
+    void createLogEntry(){//adds the log entry to the log in Firestore
+
+        //fetch what the user has inputted
         String produce = produceET.getText().toString().trim();
         String weight = weightET.getText().toString().trim();
 
@@ -136,7 +144,7 @@ public class CreateLogEntry extends AppCompatActivity {
             return;
         }
 
-        //fetch time
+        //fetch time that log entry was created
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         String timeCreated = formatter.format(date);
@@ -149,9 +157,8 @@ public class CreateLogEntry extends AppCompatActivity {
 
         //create log entry instance
         LogEntry entry = new LogEntry(FirebaseAuth.getInstance().getCurrentUser().getUid(),produceItem.getFoodType(),produceItem.getSubType(),produceItem.getType(),produceItem.getSuperType(),weight,timeCreated);
-      //  String ID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
 
-        //add log entry to Firestore
+        //Firestore query to add log entry to Firestore for this user
         usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs").document(ID).collection("Log Entries").add(entry)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -168,11 +175,79 @@ public class CreateLogEntry extends AppCompatActivity {
                     }
                 });
 
+        //fetch an array of the friends this user has added to this log
+        usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Logs")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+
+                            //QuerySnapshot is our whole collection, which has multiple document snapshots
+                            //each document snapshot represents a log entry
+                            OurLog log = documentSnapshot.toObject(OurLog.class);
+                            log.setDocumentID(documentSnapshot.getId());
+
+                            if(log.getDocumentID().equals(ID)){//checks that this is the log we want
+
+                                //fetch friends list
+                                String friendsList = log.getFriends();
+
+                                //if no friends have been added yet, skip getting friends
+                                if(friendsList.equals("")){
+                                    continue;
+                                }
+
+                                else{
+                                    getFriends(friendsList,entry);//fetches friends and adds entries to their logs
+                                }
+
+                            }
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(CreateLogEntry.this, "Fetching friends list failed", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
+
     }
 
+    private void getFriends(String friendsList, LogEntry entry){
+
+        //splits the list of friends by delimiter / to get individual UIDs
+        friendArray = friendsList.split("/");
+
+        if(friendArray!=null){
+
+            //adds the entry to the log for every friend in the friends array
+
+            for (String friend : friendArray) {
+                usersRef.document(friend).collection("Logs").document(ID).collection("Log Entries").add(entry)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+
+                        }
+                    })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(CreateLogEntry.this, "Adding entry to friends' logs failed", Toast.LENGTH_LONG).show();
+                            }
+                        });
+            }
+        }
+
+    }
     private void filter(String text) {//changes recyclerview according to search bar
         ArrayList<ProduceItem> filteredList = new ArrayList<>();
 
+        //checks if an item includes what was typed in the search bar and if so adds it to filtered list
         for (ProduceItem item : mProduceList) {
             if (item.getFoodType().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(item);
@@ -180,9 +255,10 @@ public class CreateLogEntry extends AppCompatActivity {
         }
 
         mAdapter.filterList(filteredList);
-        posList=filteredList;
+        posList=filteredList;//updates list of positions so that positions correspond correctly
     }
 
+    //list of the types of produce items in our database
     private void createProduceList() {
         mProduceList = new ArrayList<>();
         mProduceList.add(new ProduceItem("Almond","Almond","Nut","Fruit"));
@@ -283,20 +359,26 @@ public class CreateLogEntry extends AppCompatActivity {
     }
 
     private void buildRecyclerView() {//builds the recyclerview
+
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new RecycleViewAdapter(mProduceList);
 
+        //sets the adapter for the recyclerview to our custom adapter
+        mAdapter = new RecycleViewAdapter(mProduceList);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        //defines what happens when an item in the list is clicked
         mAdapter.setOnItemClickListener(new RecycleViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                //happens when a card in the recyclerview is clicked
+
                 if(posList==null){
                     posList=mProduceList;
                 }
+
+                //adding the name of the food item that was clicked to the "search bar"
                 produceET.setText(posList.get(position).getFoodType());
 
             }

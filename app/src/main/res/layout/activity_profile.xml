@@ -10,10 +10,21 @@
     >
 
     <TextView
-        android:id="@+id/logHeading"
+        android:id="@+id/Welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layout_marginBottom="24dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#434a53"
+        />
+
+    <TextView
+        android:id="@+id/logHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:textAlignment="center"
         android:text="YOUR LOGS"
@@ -21,6 +32,8 @@
         android:textStyle="bold"
         android:textColor="#434a53"
         />
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

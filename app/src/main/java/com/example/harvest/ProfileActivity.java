@@ -35,6 +35,8 @@ public class ProfileActivity extends AppCompatActivity {
     private Button addLog;
     private Button friends;
     private Button logOut;
+    private TextView welcome;
+    ProgressDialog progressDialog;
 
     //firestore database, documents and collection
     private FirebaseFirestore db  = FirebaseFirestore.getInstance();;
@@ -50,6 +52,13 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
+        //shows while user's name hasn't appeared yet
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
         //recyclerview
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -59,6 +68,8 @@ public class ProfileActivity extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
 
         //initialise UI elements and OnClickListeners
+
+        welcome = findViewById(R.id.Welcome);
 
         addLog = findViewById(R.id.addLog);
         addLog.setOnClickListener(new View.OnClickListener() {//sends to create log
@@ -135,6 +146,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void getUID(User user){
         thisUser=user;
+        welcome.setText(thisUser.getFullName());
+        if (progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
     private void fetchUID(){
         usersRef.whereEqualTo("id", FirebaseAuth.getInstance().getCurrentUser().getUid())

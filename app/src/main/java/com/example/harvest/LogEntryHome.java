@@ -62,7 +62,7 @@ public class LogEntryHome extends AppCompatActivity {
 
         heading = findViewById(R.id.logHeading);
         heading.setText(logName);
-        String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
+       // String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
 
         //initialise UI elements and OnClickListeners
         returnHome = findViewById(R.id.returnHome);
