@@ -45,13 +45,13 @@ public class ProfileActivityTest {
         onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
     }
 
-    @Test
-    public void isLogoutSuccessful(){
-        onView(withId(R.id.logOut)).perform(ViewActions.click());
-        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
-        assertNotNull(LandingMonitor);
-
-    }
+//    @Test
+//    public void isLogoutSuccessful(){
+//        onView(withId(R.id.logOut)).perform(ViewActions.click());
+//        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
+//        assertNotNull(LandingMonitor);
+//
+//    }
 
     @Test
     public void isAddLogSuccessful(){
