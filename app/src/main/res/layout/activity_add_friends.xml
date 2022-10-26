@@ -53,30 +53,28 @@
         android:textStyle="bold"
         />
 
-    <Button
-        android:id="@+id/returnToLogEntries"
-        android:text="Return to entries"
-        android:backgroundTint="#daab65"
-        android:layout_width="380dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
-    <Button
-        android:id="@+id/returnHome"
-        android:text="RETURN HOME"
-        android:backgroundTint="#daab65"
-        android:layout_width="380dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        />
+        <ImageView
+            android:id="@+id/returnToLogEntries"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:tooltipText="Log entries"
+            android:src="@drawable/ic_entries" />
+
+        <ImageView
+            android:id="@+id/returnHome"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:tooltipText="Home"
+            android:src="@drawable/ic_baseline_home_24" />
+    </LinearLayout>
 
 </LinearLayout>

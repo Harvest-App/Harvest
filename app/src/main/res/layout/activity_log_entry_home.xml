@@ -28,59 +28,56 @@
         android:textStyle="bold"
         android:textColor="#434a53"
         />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
 
-        <Button
-            android:id="@+id/addLogEntry"
-            android:text="Add new log entry"
-            android:backgroundTint="#c36c04"
-            android:layout_width="380dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            />
-        <Button
-            android:id="@+id/addFriend"
-            android:text="Add friend to log"
-            android:backgroundTint="#c36c04"
-            android:layout_width="380dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            />
-        <Button
-            android:id="@+id/logAnalytics"
-            android:text="SEE LOG ANALYTICS"
-            android:backgroundTint="#d5a050"
-            android:layout_width="380dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            />
-        <Button
-            android:id="@+id/returnHome"
-            android:text="RETURN HOME"
-            android:backgroundTint="#daab65"
-            android:layout_width="380dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            />
+    <ImageView
+        android:id="@+id/addFriend"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_addfriend"
+        android:tooltipText="Add user to log"/>
+
+    <ImageView
+    android:id="@+id/returnHome"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_marginTop="20dp"
+    android:layout_alignParentEnd="true"
+    android:layout_weight="1"
+    android:src="@drawable/ic_baseline_home_24"
+        android:tooltipText="Home"/>
+
+    <ImageView
+        android:id="@+id/logAnalytics"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1"
+        android:tooltipText="Log analytics"
+        android:src="@drawable/ic_analytics" />
+</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/addLogEntry"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_add"
+                android:tooltipText="Add log entry"/>
+</LinearLayout>
+
         <TextView
         android:id="@+id/logDisplay"
         android:layout_width="match_parent"
@@ -90,10 +87,11 @@
         android:layout_weight="1"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:textColor="#a29990"
+        android:textColor="#363731"
         />
 
 
     </LinearLayout>
+
 </ScrollView>
 

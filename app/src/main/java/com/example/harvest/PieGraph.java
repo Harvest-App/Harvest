@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +38,8 @@ public class PieGraph extends AppCompatActivity {
 
 
     //UI elements
-    private Button analytics;
-    private Button entries;
+    private ImageView analytics;
+    private ImageView entries;
     PieChart pieChart;
 
     //variables

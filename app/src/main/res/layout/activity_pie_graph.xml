@@ -17,30 +17,28 @@ tools:context=".PieGraph">
         android:id="@+id/activity_piechart"/>
 
 
-<Button
-    android:id="@+id/returnToAnalytics"
-    android:text="Return to analytics"
-    android:backgroundTint="#daab65"
-    android:layout_width="380dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    android:textSize="26sp"
-    android:textStyle="bold"
-    />
 
-<Button
-    android:id="@+id/returnToEntries"
-    android:text="Return to entries"
-    android:backgroundTint="#daab65"
-    android:layout_width="380dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    android:textSize="26sp"
-    android:textStyle="bold"
-    />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/returnToEntries"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:tooltipText="Return to log entries"
+            android:src="@drawable/ic_entries" />
+        <ImageView
+            android:id="@+id/returnToAnalytics"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:tooltipText="Return to analytics"
+            android:src="@drawable/ic_analytics" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,9 +33,9 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     //UI elements
-    private Button addLog;
-    private Button friends;
-    private Button logOut;
+    private ImageView addLog;
+    private ImageView friends;
+    private ImageView logOut;
     private TextView welcome;
     ProgressDialog progressDialog;
 
@@ -53,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
 
-        //shows while user's name hasn't appeared yet
+        //loading image that shows while user's name hasn't appeared yet
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading...");
@@ -69,8 +70,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         //initialise UI elements and OnClickListeners
 
+        //welcome textview that contains user's name
         welcome = findViewById(R.id.Welcome);
 
+        //button to add a new log
         addLog = findViewById(R.id.addLog);
         addLog.setOnClickListener(new View.OnClickListener() {//sends to create log
             @Override
@@ -79,6 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        //button to go to the invitation tracker
         friends = findViewById(R.id.friends);
 
         friends.setOnClickListener(new View.OnClickListener() {//logs user out
@@ -91,6 +95,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        //button to log out
         logOut = findViewById(R.id.logOut);
 
         logOut.setOnClickListener(new View.OnClickListener() {//logs user out
@@ -103,6 +108,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         EventChangeListener();//checks for recyclerview changes
 
+        //defines what happens when an item in the log recyclerview is clicked
         myAdapter.setOnItemClickListener(new RecyclerViewAdapterLog.OnItemClickListener() {
             //takes user to the log entries when they click on a log
             @Override

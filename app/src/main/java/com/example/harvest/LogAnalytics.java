@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,8 +30,8 @@ import java.util.ArrayList;
 public class LogAnalytics extends AppCompatActivity {
 
     //UI elements
-    private Button returnToEntries;
-    private Button returnHome;
+    private ImageView returnToEntries;
+    private ImageView returnHome;
     private TextView sumData;
     private TextView displayHeading;
     private EditText produceET;

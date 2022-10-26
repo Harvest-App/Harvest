@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,8 +51,8 @@ public class BarGraph extends AppCompatActivity{
     private static final String TAG = "BarGraph";
 
     //UI elements
-    private Button analytics;
-    private Button entries;
+    private ImageView analytics;
+    private ImageView entries;
     private Spinner categorySpinner;
     private Spinner categoryListSpinner;
     private Spinner timeSpinner;

@@ -38,47 +38,49 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:background="#FFEEDA"
         android:padding="4dp"
         android:scrollbars="vertical" />
 
-    <Button
-        android:id="@+id/addLog"
-        android:text="Add new log"
-        android:backgroundTint="#c36c04"
-        android:layout_width="380dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textSize="26sp"
-        android:textStyle="bold"
 
-        />
-    <Button
-        android:id="@+id/friends"
-        android:text="friend tracker"
-        android:backgroundTint="#ce8b35"
-        android:layout_width="380dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textSize="26sp"
-        android:textStyle="bold"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
-        />
-    <Button
-        android:id="@+id/logOut"
-        android:text="Log out"
-        android:backgroundTint="#daab65"
-        android:layout_width="380dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        />
+        <ImageView
+            android:id="@+id/addLog"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:tooltipText="Add new log"
+            android:src="@drawable/ic_add" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/friends"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:tooltipText="Invitation tracker"
+            android:src="@drawable/ic_mail" />
+
+        <ImageView
+            android:id="@+id/logOut"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:tooltipText="Log out"
+            android:src="@drawable/ic_logout" />
+    </LinearLayout>
 </LinearLayout>

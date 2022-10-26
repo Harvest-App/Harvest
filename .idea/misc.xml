@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_add.xml" value="0.168" />
+        <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_addfriend.xml" value="0.168" />
+        <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_analytics.xml" value="0.168" />
+        <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.168" />
+        <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_entries.xml" value="0.168" />
+        <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_filtering.xml" value="0.168" />
+        <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_logout.xml" value="0.101" />
+        <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_mail.xml" value="0.101" />
+        <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_piechart.xml" value="0.101" />
         <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_thumbs_down.xml" value="0.168" />
         <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/drawable/ic_thumbs_up.xml" value="0.168" />
         <entry key="..\:/Users/VWG/AndroidStudioProjects/Harvest App Escapees/app/src/main/res/layout/activity_add_friends.xml" value="0.19021739130434784" />

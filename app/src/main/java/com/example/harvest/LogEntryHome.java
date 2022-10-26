@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DownloadManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,14 +37,15 @@ import java.util.Map;
 public class LogEntryHome extends AppCompatActivity {
 
     //UI elements
-    private Button returnHome;
-    private Button addEntry;
+    private ImageView returnHome;
+    private ImageView addEntry;
     private TextView logDisplayTextView;
     private TextView heading;
-    private Button analytics;
-    private Button addFriend;
+    private ImageView analytics;
+    private ImageView addFriend;
+    ProgressDialog progressDialog;
 
-    //firestore database, documents, and collections
+    //Firestore database, documents, and collections
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference usersRef = db.collection("users");//what we wanna add nodes to
     private DocumentReference logRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -54,17 +57,26 @@ public class LogEntryHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_entry_home);
 
+        //fetch intent that has log information
         Intent intent = getIntent();
         if(intent!=null){
             ID=getIntent().getStringExtra("logID");
             logName = getIntent().getStringExtra("logName");
         }
 
+        //loading image that shows while log entries are still loading
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
+        //heading that has log name
         heading = findViewById(R.id.logHeading);
         heading.setText(logName);
-       // String logID = (usersRef.document(FirebaseAuth.getInstance().getCurrentUser().getUid())).getId();
 
         //initialise UI elements and OnClickListeners
+
+        //home button
         returnHome = findViewById(R.id.returnHome);
 
         returnHome.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +86,7 @@ public class LogEntryHome extends AppCompatActivity {
             }
         });
 
+        //button to add a new log entry
         addEntry =  findViewById(R.id.addLogEntry);
 
         addEntry.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +100,7 @@ public class LogEntryHome extends AppCompatActivity {
             }
         });
 
+        //button to go to analytics activity
         analytics = findViewById(R.id.logAnalytics);
 
         analytics.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +114,7 @@ public class LogEntryHome extends AppCompatActivity {
             }
         });
 
+        //button to go to AddFriends activity
         addFriend = findViewById(R.id.addFriend);
 
         addFriend.setOnClickListener(new View.OnClickListener() {
@@ -113,14 +128,14 @@ public class LogEntryHome extends AppCompatActivity {
             }
         });
 
+        //textView to list logs
+        logDisplayTextView = findViewById(R.id.logDisplay);
 
-        logDisplayTextView = findViewById(R.id.logDisplay); //textView to list logs
-
+        //function that fetches log entries from Firestore
         loadLogEntries(ID);
     }
 
-    //fetch and display log entries, filter latest on top
-
+    //fetch and display log entries from Firestore, filter latest on top
     public void loadLogEntries(String logID){//fetches log entries from Firestore
         allLogsRef.document(logID).collection("Log Entries").orderBy("timeCreated", Query.Direction.DESCENDING)
                 .get()
@@ -142,6 +157,10 @@ public class LogEntryHome extends AppCompatActivity {
 
                         }
                         logDisplayTextView.setText(entryInfo);
+                        //closes loading image
+                        if (progressDialog.isShowing()) {
+                            progressDialog.dismiss();
+                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,8 +44,8 @@ public class CreateLogEntry extends AppCompatActivity {
     private EditText produceET;
     private EditText weightET;
     private Button addLogEntry;
-    private Button returnHome;
-    private Button seeEntries;
+    private ImageView returnHome;
+    private ImageView seeEntries;
     private ProduceItem produceItem;
 
     //Firestore database and paths
