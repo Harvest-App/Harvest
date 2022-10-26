@@ -39,11 +39,11 @@ public class ProfileActivityTest {
         profileActivity = profileActivityActivityScenarioRule.getScenario();
     }
 
-    @Test
-    public void isActivityInView(){
-
-        onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void isActivityInView(){
+//
+//        onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
+//    }
 
 //    @Test
 //    public void isLogoutSuccessful(){
