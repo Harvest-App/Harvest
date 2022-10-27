@@ -47,7 +47,7 @@ public class CreateLogTest {
     public void isLogNameEmpty(){
         onView(withId(R.id.logName)).perform(ViewActions.typeText(""));
         closeSoftKeyboard();
-        onView(withId(R.id.addLog)).perform(ViewActions.click());
+        onView(withId(R.id.addLog1)).perform(ViewActions.click());
         onView(withId(R.id.logName)).check(matches(hasErrorText("Enter log name to proceed")));
     }
 
