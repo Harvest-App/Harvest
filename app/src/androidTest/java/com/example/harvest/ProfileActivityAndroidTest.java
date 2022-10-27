@@ -12,6 +12,7 @@ import android.app.Instrumentation;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -61,6 +62,13 @@ public class ProfileActivityAndroidTest {
         onView(withId(R.id.friends)).perform(ViewActions.click());
         Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(FriendsManager.class.getName(),null,false);
         assertNotNull(LandingMonitor);
+    }
+
+    @Test
+    public void isLogEntryClickSuccessful(){
+        onView(withId(R.id.recyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
+        Instrumentation.ActivityMonitor Lmonitor = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
+        assertNotNull(Lmonitor);
 
     }
 }

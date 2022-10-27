@@ -43,7 +43,7 @@ public class LogEntryHome extends AppCompatActivity {
     private TextView heading;
     private ImageView analytics;
     private ImageView addFriend;
-    ProgressDialog progressDialog;
+//    ProgressDialog progressDialog;
 
     //Firestore database, documents, and collections
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -65,10 +65,10 @@ public class LogEntryHome extends AppCompatActivity {
         }
 
         //loading image that shows while log entries are still loading
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+//        progressDialog = new ProgressDialog(this);
+//        progressDialog.setCancelable(false);
+//        progressDialog.setMessage("Loading...");
+//        progressDialog.show();
 
         //heading that has log name
         heading = findViewById(R.id.logHeading);
@@ -158,9 +158,9 @@ public class LogEntryHome extends AppCompatActivity {
                         }
                         logDisplayTextView.setText(entryInfo);
                         //closes loading image
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
+//                        if (progressDialog.isShowing()) {
+//                            progressDialog.dismiss();
+//                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
