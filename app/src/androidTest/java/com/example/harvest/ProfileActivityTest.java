@@ -52,13 +52,13 @@ public class ProfileActivityTest {
 //
 //    }
 
-    @Test
-    public void isAddLogSuccessful(){
-        onView(withId(R.id.addLog)).perform(ViewActions.click());
-        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(CreateLog.class.getName(),null,false);
-        assertNotNull(LandingMonitor);
-
-    }
+//    @Test
+//    public void isAddLogSuccessful(){
+//        onView(withId(R.id.addLog)).perform(ViewActions.click());
+//        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(CreateLog.class.getName(),null,false);
+//        assertNotNull(LandingMonitor);
+//
+//    }
 
 //    @Test
 //    public void isLogEntryClickSuccessful(){
