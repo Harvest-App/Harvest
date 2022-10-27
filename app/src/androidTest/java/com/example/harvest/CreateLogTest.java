@@ -51,13 +51,13 @@ public class CreateLogTest {
         onView(withId(R.id.logName)).check(matches(hasErrorText("Enter log name to proceed")));
     }
 
-    @Test
-    public void isReturnHomeSuccessful(){
-        onView(withId(R.id.returnHome)).perform(ViewActions.click());
-        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
-        assertNotNull(LandingMonitor);
-
-    }
+//    @Test
+//    public void isReturnHomeSuccessful(){
+//        onView(withId(R.id.returnHome)).perform(ViewActions.click());
+//        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+//        assertNotNull(LandingMonitor);
+//
+//    }
 
 //    @Test
 //    public void isAddLog(){
