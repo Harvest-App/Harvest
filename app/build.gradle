@@ -74,5 +74,6 @@ dependencies {
 
     // FirebaseUI for Cloud Firestore - added 21 October
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
+    implementation 'com.google.firebase:firebase-core:19.0.2'
     implementation 'com.google.android.material:material:1.0.0'
 }
