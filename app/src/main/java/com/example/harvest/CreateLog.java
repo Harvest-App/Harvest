@@ -46,7 +46,7 @@ public class CreateLog extends AppCompatActivity {
             startActivity(intent);
         });
 
-        addLog = (Button) findViewById(R.id.addLog);
+        addLog = (Button) findViewById(R.id.addLog1);
         addLog.setOnClickListener(view -> {
             createLog();
         });
