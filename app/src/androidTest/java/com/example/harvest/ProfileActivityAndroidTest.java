@@ -1,6 +1,8 @@
 package com.example.harvest;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
@@ -34,9 +36,30 @@ public class ProfileActivityAndroidTest {
     }
 
     @Test
+    public void isActivityInView(){
+        onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
+    }
+
+    @Test
     public void isLogoutSuccessful(){
         onView(withId(R.id.logOut)).perform(ViewActions.click());
         Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
+        assertNotNull(LandingMonitor);
+
+    }
+
+    @Test
+    public void isAddLogSuccessful(){
+        onView(withId(R.id.addLog)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(CreateLog.class.getName(),null,false);
+        assertNotNull(LandingMonitor);
+
+    }
+
+    @Test
+    public void isFriendsSuccessful(){
+        onView(withId(R.id.friends)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(FriendsManager.class.getName(),null,false);
         assertNotNull(LandingMonitor);
 
     }
