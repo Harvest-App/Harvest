@@ -26,7 +26,7 @@ public class ProfileActivityAndroidTest {
 
     private ActivityScenario<ProfileActivity> profileActivity = null;
 
-    //Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
 
     @Before
     public void setup() throws Exception{

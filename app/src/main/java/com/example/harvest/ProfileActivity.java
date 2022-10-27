@@ -37,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView friends;
     private ImageView logOut;
     private TextView welcome;
-    ProgressDialog progressDialog;
+//    ProgressDialog progressDialog;
 
     //firestore database, documents and collection
     private FirebaseFirestore db  = FirebaseFirestore.getInstance();;
@@ -55,10 +55,10 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         //loading image that shows while user's name hasn't appeared yet
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+//        progressDialog = new ProgressDialog(this);
+//        progressDialog.setCancelable(false);
+//        progressDialog.setMessage("Loading...");
+//        progressDialog.show();
 
         //recyclerview
         recyclerView = findViewById(R.id.recyclerView);
@@ -153,9 +153,9 @@ public class ProfileActivity extends AppCompatActivity {
     private void getUID(User user){
         thisUser=user;
         welcome.setText(thisUser.getFullName());
-        if (progressDialog.isShowing()) {
-            progressDialog.dismiss();
-        }
+//        if (progressDialog.isShowing()) {
+//            progressDialog.dismiss();
+//        }
     }
     private void fetchUID(){
         usersRef.whereEqualTo("id", FirebaseAuth.getInstance().getCurrentUser().getUid())
