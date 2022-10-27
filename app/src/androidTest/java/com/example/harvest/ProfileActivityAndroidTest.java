@@ -59,7 +59,6 @@ public class ProfileActivityAndroidTest {
 
     @Test
     public void isFriendsSuccessful(){
-        onView(withId(R.id.friends)).perform(ViewActions.scrollTo());
         onView(withId(R.id.friends)).perform(ViewActions.click());
         Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(FriendsManager.class.getName(),null,false);
         assertNotNull(LandingMonitor);
