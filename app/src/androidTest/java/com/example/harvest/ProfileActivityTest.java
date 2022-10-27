@@ -23,27 +23,26 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-//@RunWith(AndroidJUnit4.class)
+@RunWith(AndroidJUnit4.class)
 public class ProfileActivityTest {
 
-//    @Rule
-//    public ActivityScenarioRule<ProfileActivity> profileActivityActivityScenarioRule = new ActivityScenarioRule<ProfileActivity>(ProfileActivity.class);
-//
-//    private ActivityScenario<ProfileActivity> profileActivity = null;
-//
-//    Instrumentation.ActivityMonitor m = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
-//
-//    @Before
-//    public void setup() throws Exception{
-//
-//        profileActivity = profileActivityActivityScenarioRule.getScenario();
-//    }
+    @Rule
+    public ActivityScenarioRule<ProfileActivity> profileActivityActivityScenarioRule = new ActivityScenarioRule<ProfileActivity>(ProfileActivity.class);
 
-//    @Test
-//    public void isActivityInView(){
-//
-//        onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
-//    }
+    private ActivityScenario<ProfileActivity> profileActivity = null;
+
+    Instrumentation.ActivityMonitor m = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+
+    @Before
+    public void setup() throws Exception{
+
+        profileActivity = profileActivityActivityScenarioRule.getScenario();
+    }
+
+    @Test
+    public void isActivityInView(){
+        onView(withId(R.id.profileActivity)).check(matches(isDisplayed()));
+    }
 
 //    @Test
 //    public void isLogoutSuccessful(){
