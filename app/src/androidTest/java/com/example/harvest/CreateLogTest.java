@@ -30,6 +30,8 @@ public class CreateLogTest {
 
     private ActivityScenario<CreateLog> createLog = null;
 
+    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(CreateLog.class.getName(),null,false);
+
     @Before
     public void setup() throws Exception{
 
@@ -48,4 +50,20 @@ public class CreateLogTest {
         onView(withId(R.id.addLog)).perform(ViewActions.click());
         onView(withId(R.id.logName)).check(matches(hasErrorText("Enter log name to proceed")));
     }
+
+    @Test
+    public void isReturnHomeSuccessful(){
+        onView(withId(R.id.returnHome)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+        assertNotNull(LandingMonitor);
+
+    }
+
+//    @Test
+//    public void isAddLog(){
+//        onView(withId(R.id.logName)).perform(ViewActions.typeText("AppleFarm"));
+//        closeSoftKeyboard();
+//        onView(withId(R.id.addLog)).perform(ViewActions.click());
+//
+//    }
 }
