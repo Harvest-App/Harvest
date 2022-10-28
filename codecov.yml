@@ -9,6 +9,12 @@ ignore:
   - "**/User.java"
   - "**/PieGraph.java"
   - "**/BarGraph.java"
-  - "**/LogEntryHome.java"
   - "**/BarGraphValidation.java"
   - "**/PieGraphValidation.java"
+  - "**/SentInvite.java"
+  - "**/AddFriends.java"
+  - "**/FriendsAdapter.java"
+  - "**/GotInvite.java"
+  - "**/OutboxAdapter.java"
+  - "**/InboxAdapter.java"
+  -
