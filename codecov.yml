@@ -18,3 +18,4 @@ ignore:
   - "**/OutboxAdapter.java"
   - "**/InboxAdapter.java"
   - "**/LogEntryHome.java"
+  - "**/AddFriendValidation.java"
