@@ -57,12 +57,12 @@ public class ProfileActivityAndroidTest {
 
     }
 
-//    @Test
-//    public void isFriendsSuccessful(){
-//        onView(withId(R.id.friends)).perform(ViewActions.click());
-//        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(FriendsManager.class.getName(),null,false);
-//        assertNotNull(LandingMonitor);
-//    }
+    @Test
+    public void isFriendsSuccessful(){
+        onView(withId(R.id.friends)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(FriendsManager.class.getName(),null,false);
+        assertNotNull(LandingMonitor);
+    }
 
 //    @Test
 //    public void isLogEntryClickSuccessful(){
