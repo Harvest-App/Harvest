@@ -128,21 +128,21 @@ public class MainActivityAndroidTest {
 
     }
 
-    @Test
-    public void isReturnHomeSuccessful(){
-        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
-        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
-        closeSoftKeyboard();
-        onView(withId(R.id.login)).perform(ViewActions.click());
-        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
-
-        onView(withId(R.id.addLog)).perform(ViewActions.click());
-        Instrumentation.ActivityMonitor LMonitor = getInstrumentation().addMonitor(CreateLog.class.getName(),null,false);
-
-        onView(withId(R.id.returnHome)).perform(ViewActions.click());
-        Instrumentation.ActivityMonitor LandMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
-        assertNotNull(LandMonitor);
-    }
+//    @Test
+//    public void isReturnHomeSuccessful(){
+//        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
+//        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
+//        closeSoftKeyboard();
+//        onView(withId(R.id.login)).perform(ViewActions.click());
+//        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+//
+//        onView(withId(R.id.addLog)).perform(ViewActions.click());
+//        Instrumentation.ActivityMonitor LMonitor = getInstrumentation().addMonitor(CreateLog.class.getName(),null,false);
+//
+//        onView(withId(R.id.returnHome)).perform(ViewActions.click());
+//        Instrumentation.ActivityMonitor LandMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+//        assertNotNull(LandMonitor);
+//    }
 
 //    @Test
 //    public void isAddLog(){
