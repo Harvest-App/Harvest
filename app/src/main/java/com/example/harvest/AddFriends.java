@@ -45,7 +45,7 @@ public class AddFriends extends AppCompatActivity {
     private Button addFriend;
     private TextView heading;
     private EditText searchBar;
-    ProgressDialog progressDialog;
+//    ProgressDialog progressDialog;
 
     //firebase information
     private String ID;
@@ -71,9 +71,9 @@ public class AddFriends extends AppCompatActivity {
         }
 
         //shows while information hasn't appeared yet
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Searching...");
+//        progressDialog = new ProgressDialog(this);
+//        progressDialog.setCancelable(false);
+//        progressDialog.setMessage("Searching...");
 
 
         //initialise our UI variables so that we can alter them dynamically (viewbinding)
