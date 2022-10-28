@@ -17,24 +17,24 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(AndroidJUnit4.class)
+//@RunWith(AndroidJUnit4.class)
 
 public class FriendsManagerTest {
 
-    @Rule
-    public ActivityScenarioRule<FriendsManager> friendsManagerActivityScenarioRule = new ActivityScenarioRule<FriendsManager>(FriendsManager.class);
-
-    private ActivityScenario<FriendsManager> friendsManager = null;
-
-    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(FriendsManager.class.getName(),null,false);
-
-    @Before
-    public void setup() throws Exception{
-        friendsManager = friendsManagerActivityScenarioRule.getScenario();
-    }
-
-    @Test
-    public void isActivityInView(){
-        onView(withId(R.id.friendsManager)).check(matches(isDisplayed()));
-    }
+//    @Rule
+//    public ActivityScenarioRule<FriendsManager> friendsManagerActivityScenarioRule = new ActivityScenarioRule<FriendsManager>(FriendsManager.class);
+//
+//    private ActivityScenario<FriendsManager> friendsManager = null;
+//
+//    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(FriendsManager.class.getName(),null,false);
+//
+//    @Before
+//    public void setup() throws Exception{
+//        friendsManager = friendsManagerActivityScenarioRule.getScenario();
+//    }
+//
+//    @Test
+//    public void isActivityInView(){
+//        onView(withId(R.id.friendsManager)).check(matches(isDisplayed()));
+//    }
 }
