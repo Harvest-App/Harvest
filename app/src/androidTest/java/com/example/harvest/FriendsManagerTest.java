@@ -26,7 +26,7 @@ public class FriendsManagerTest {
 
     private ActivityScenario<FriendsManager> friendsManager = null;
 
-    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(MainActivity.class.getName(),null,false);
+    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(FriendsManager.class.getName(),null,false);
 
     @Before
     public void setup() throws Exception{
