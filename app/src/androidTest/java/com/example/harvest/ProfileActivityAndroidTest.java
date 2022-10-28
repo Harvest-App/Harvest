@@ -1,5 +1,6 @@
 package com.example.harvest;
 
+import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -64,11 +65,11 @@ public class ProfileActivityAndroidTest {
         assertNotNull(LandingMonitor);
     }
 
-//    @Test
-//    public void isLogEntryClickSuccessful(){
-//        onView(withId(R.id.recyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
-//        Instrumentation.ActivityMonitor Lmonitor = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
-//        assertNotNull(Lmonitor);
-//
-//    }
+    @Test
+    public void isLogEntryClickSuccessful(){
+        onView(withId(R.id.recyclerView)).perform(RecyclerViewActions.scrollToPosition(0)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor Lmonitor = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
+        assertNotNull(Lmonitor);
+
+    }
 }
