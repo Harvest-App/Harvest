@@ -114,6 +114,19 @@ public class MainActivityAndroidTest {
 
     }
 
+    @Test
+    public void isLogEntryClickSuccessful(){
+        onView(withId(R.id.loginEmail)).perform(ViewActions.typeText("pumpkinpraiser@gmail.com"));
+        onView(withId(R.id.loginPassword)).perform(ViewActions.typeText("pumpkins"));
+        closeSoftKeyboard();
+        onView(withId(R.id.login)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor LandingMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(),null,false);
+
+        onView(withId(R.id.recyclerView)).perform(RecyclerViewActions.scrollToPosition(0)).perform(ViewActions.click());
+        Instrumentation.ActivityMonitor Lmonitor = getInstrumentation().addMonitor(LogEntryHome.class.getName(),null,false);
+        assertNotNull(Lmonitor);
+
+    }
 
     @Test
     public void isReturnHomeSuccessful(){
