@@ -17,4 +17,3 @@ ignore:
   - "**/GotInvite.java"
   - "**/OutboxAdapter.java"
   - "**/InboxAdapter.java"
-  -
