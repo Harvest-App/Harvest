@@ -70,7 +70,7 @@ dependencies {
 
     //debugImplementation 'androidx.fragment:fragment-testing:1.3.6'
 
-    debugImplementation 'androidx.fragment:fragment-testing:1.5.3'
+    debugImplementation 'androidx.fragment:fragment-testing:1.5.4'
 
     // FirebaseUI for Cloud Firestore - added 21 October
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
